@@ -21,7 +21,7 @@ categoriesRouter.post("/", async (req, res) => {
 
 })
 .get("/", async(req, res) => {
-    const category = await categoriesModel.find({})
+    const category = await categoriesModel.find({}).populate("books").exec()
     try {
         console.log(category);
         res.json(category)
@@ -56,9 +56,9 @@ categoriesRouter.post("/", async (req, res) => {
     const { id } = request.params;
     const category = request.body
     const updatedcategory = {
-       // ...(comment.author ? { author: comment.author } : {}),
-        ...(category.category ? { category: category.category } : {}),
-        ...(category.post ? { post: comment.post  } : {})
+        ...(category.name ? { name: category.name } : {}),
+        ...(category.CategoryID ? { CategoryID: category.CategoryID  } : {})
+
     }
 
     try {
@@ -68,20 +68,5 @@ categoriesRouter.post("/", async (req, res) => {
         return console.log(error);
     }
 })
-// categoriesRouter.get("/:id", async (req, res) => {
-//     const { id } = req.params
-//     try {
-//         const category = await categoriesModel.findById(id).exec()
-//         res.json(category)
-//     }
-//     catch (err) {
-//         console.log(err)
-//     }
-//     categoriesRouter.patch("/id", async (req, res) => {
-//         const category = await categoriesModel.findByIdAndUpdate({
-
-// })
-//     })
-// })
 
 module.exports = categoriesRouter;
