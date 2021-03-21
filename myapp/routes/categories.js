@@ -56,8 +56,8 @@ categoriesRouter.post("/", async (req, res) => {
     const { id } = request.params;
     const category = request.body
     const updatedcategory = {
-        ...(category.name ? { name: category.name } : {}),
-        ...(category.CategoryID ? { CategoryID: category.CategoryID  } : {})
+        ...(category.Name ? { Name: category.Name } : {}),
+        ...(category.CategoryId ? { CategoryId: category.CategoryId  } : {})
 
     }
 
