@@ -1,6 +1,0 @@
-{"_id":{"$oid":"6054fb39fef6b821626ca7f9"},"Name":"Comic","CategoryId":6.0,"books":[]}
-{"_id":{"$oid":"6054fb43fef6b821626ca7fa"},"Name":"Novel","CategoryId":5.0,"books":[]}
-{"_id":{"$oid":"6054fb5dfef6b821626ca7fc"},"Name":"Science Fictuin","CategoryId":3.0,"books":[]}
-{"_id":{"$oid":"6054fb67fef6b821626ca7fd"},"Name":"Cook","CategoryId":2.0,"books":[]}
-{"_id":{"$oid":"6054fb79fef6b821626ca7fe"},"Name":"Classic","CategoryId":1.0,"books":[]}
-{"_id":{"$oid":"6054fb96fef6b821626ca7ff"},"Name":"Romantic","CategoryId":4.0,"books":[]}

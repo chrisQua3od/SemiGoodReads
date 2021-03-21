@@ -13,4 +13,4 @@ userSchema.statics.FindAll = function () {
   return this.find({});
 };
 
-module.exports = mongoose.model("coll", userSchema);
+module.exports = mongoose.model("aya", userSchema);
