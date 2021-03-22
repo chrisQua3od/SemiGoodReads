@@ -1,6 +1,7 @@
 const express = require("express")
 const categoriesModel = require('../models/categories')
 const categoriesRouter = express.Router();
+const categoriesController = require('../controllers/categories')
 categoriesRouter.post("/", async (req, res) => {
 
     const categoriesInstance = new categoriesModel({
@@ -20,30 +21,20 @@ categoriesRouter.post("/", async (req, res) => {
     }
 
 })
-.get("/", async(req, res) => {
-    const category = await categoriesModel.find({})
-    try {
-        console.log(category);
-        res.json(category)
-    }
-    catch (err) {
-        console.log(err)
-    }
-})
-// categoriesRouter.get("/:id", async (req, res) => {
-//     const { id } = req.params
-//     try {
-//         const category = await categoriesModel.findById(id).exec()
-//         res.json(category)
-//     }
-//     catch (err) {
-//         console.log(err)
-//     }
-//     categoriesRouter.patch("/id", async (req, res) => {
-//         const category = await categoriesModel.findByIdAndUpdate({
-
-// })
-//     })
-// })
-
+    .get("/", async (req, res) => {
+        try {
+            res.send(categoriesController.listCategories())
+        }
+        catch {
+            res.send("error")
+        }
+        // const category = await categoriesModel.find({})
+        // try {
+        //     console.log(category);
+        //     res.json(category)
+        // }
+        // catch (err) {
+        //     console.log(err)
+        // }
+    })
 module.exports = categoriesRouter;
