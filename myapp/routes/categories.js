@@ -21,7 +21,7 @@ categoriesRouter.post("/", async (req, res) => {
 
 })
 .get("/", async(req, res) => {
-    const category = await categoriesModel.find({})
+    const category = await categoriesModel.find({}).populate("books").exec()
     try {
         console.log(category);
         res.json(category)
@@ -30,20 +30,43 @@ categoriesRouter.post("/", async (req, res) => {
         console.log(err)
     }
 })
-// categoriesRouter.get("/:id", async (req, res) => {
-//     const { id } = req.params
-//     try {
-//         const category = await categoriesModel.findById(id).exec()
-//         res.json(category)
-//     }
-//     catch (err) {
-//         console.log(err)
-//     }
-//     categoriesRouter.patch("/id", async (req, res) => {
-//         const category = await categoriesModel.findByIdAndUpdate({
 
-// })
-//     })
-// })
+
+.get("/:id", async (request, response)=> {
+    const { id } = request.params
+    try {
+        const category = await categoriesModel.findById(id).populate("books").exec()
+        response.json(category);
+    } catch (error) {
+        return console.log(error);
+    }
+})
+
+.delete("/:id", async (request, response)=> {
+    const { id } = request.params
+    try {
+        const deletedcategory = await categoriesModel.deleteOne({_id: id})
+        response.send("categoriesModel Deleted Correctly")
+    } catch (error) {
+        return console.log(error);
+    }
+})
+
+.patch("/:id", async (request, response)=> {
+    const { id } = request.params;
+    const category = request.body
+    const updatedcategory = {
+        ...(category.Name ? { Name: category.Name } : {}),
+        ...(category.CategoryId ? { CategoryId: category.CategoryId  } : {})
+
+    }
+
+    try {
+        const updatededcategory = await categoriesModel.findOneAndUpdate({ _id: id }, updatedcategory)
+        response.json(updatededcategory)
+    } catch (error) {
+        return console.log(error);
+    }
+})
 
 module.exports = categoriesRouter;
