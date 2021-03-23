@@ -24,7 +24,7 @@ bookRouter.post("/", async (req, res) => {
 
 })
 .get("/", async(req, res) => {
-    const book = await bookModel.find({}).populate("author").exec();
+    const book = await bookModel.FindByAuthor().populate("author").exec();
     try {
         console.log(book);
         res.json(book)

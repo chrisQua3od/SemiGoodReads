@@ -26,6 +26,17 @@ booksSchema.post('save', function (doc) {
 
 });
 
+booksSchema.statics.FindAll = function(){
+  return this.find({})
+}
+
+booksSchema.statics.FindByCategory = function(){
+  return this.find({_id:"60550b98f614a772827c0a8f"})
+}
+
+booksSchema.statics.FindByAuthor = function(){
+  return this.find({"_id":"60550b98f614a772827c0a8f"})
+}
 
 const booksModel = mongoose.model("books", booksSchema)
 module.exports = booksModel;
