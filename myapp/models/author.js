@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Authorschema = new mongoose.Schema({
 
-    ID:{type : Number, required:true},
+   ID: {type : Number, required:true},
     photo: {type : String},
     fname: {type : String, required : true},
     lname: {type : String, required : true},
@@ -10,5 +10,5 @@ const Authorschema = new mongoose.Schema({
     books: [{ type: mongoose.Schema.Types.ObjectId,required: true, ref: 'books' }]
 })
 
-const AuthorModel = mongoose.model("Author",Authorschema)
-module.exports = AuthorModel;
+
+module.exports = mongoose.model("Author",Authorschema);

@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var mongoDB = "mongodb://127.0.0.1/testdb";
+var mongoDB = "mongodb://127.0.0.1/Mytest";
 
 if (
   mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
