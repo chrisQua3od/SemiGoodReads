@@ -1,10 +1,10 @@
 const express = require("express")
-const userModel = require('../models/users')
+const UserModel = require('../models/users')
 const userRouter = express.Router();
 
 userRouter
 .get("/", async(req, res) => {
-    const user = await userModel.find({})
+    const user = await UserModel.find({})
     try {
         console.log(user);
         res.json(user)
@@ -14,7 +14,7 @@ userRouter
     }
 })
 .post("/",async(req,res)=>{
-    const userInstance = new userModel({
+    const userInstance = new UserModel({
         photo: req.body.photo,
         fname: req.body.fname,
         lname: req.body.lname,
