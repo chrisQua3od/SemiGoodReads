@@ -21,7 +21,7 @@ app.use("/categories", categories);
 app.use("/authors", author);
 app.use("/books", books);
 app.use("/register", register);
-app.use("/user", user);
+app.use("/users", user);
 
 app.use((req, res) => {
   res.status(404).send("Sorry can't find that!");
