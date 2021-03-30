@@ -31,6 +31,7 @@ app.use((err, req, res) => {
 });
 
 app.listen(PORT, (err) => {
-  if (err) console.error(err);
+  if (err) console.error("hhhhhhhhhhhhhhhh",err);
   console.log(`App server is running and listening on port ${PORT}`);
+  
 });

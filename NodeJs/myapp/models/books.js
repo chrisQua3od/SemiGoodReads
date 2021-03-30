@@ -9,15 +9,19 @@ const booksSchema = new mongoose.Schema({
   AvgRate: { type: Number,  },
   CategoryId: { type: mongoose.Schema.Types.ObjectId, ref: "categories" },
   sumAvg: { type: Number },
-  countAvg: { type: Number }
+  countAvg: { type: Number },
+  ///chris
+  reviews: [{ type: mongoose.Schema.Types.ObjectId,required: true, ref: 'users' }]
+  ///chris
 })
 
+///chris
 booksSchema.post('save', function (doc) {
   categoriesModel.findByIdAndUpdate(doc.CategoryId, { $push: { books: doc._id } }, (err, posts) => {
     console.log("hello")
   })
-
 });
+///chris
 
 booksSchema.post('save', function (doc) {
   AuthorModel.findByIdAndUpdate(doc.author, { $push: { books: doc._id } }, (err, posts) => {
