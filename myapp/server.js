@@ -5,7 +5,12 @@ const test = require("./routes/test");
 const categories = require("./routes/categories");
 const author = require("./routes/authors");
 const books = require("./routes/books");
+//<<<<<<< bassiouny
+const register = require('./routes/register')
+//const user = require('./routes/user')
+//=======
 const users = require("./routes/users");
+//>>>>>>> develop
 
 const bodyParser = require("body-parser");
 
@@ -19,7 +24,12 @@ app.use("/test", test);
 app.use("/categories", categories);
 app.use("/authors", author);
 app.use("/books", books);
+//<<<<<<< bassiouny
+app.use("/register", register);
+//app.use("/users", user);
+//=======
 app.use("/users", users);
+//>>>>>>> develop
 
 app.use((req, res) => {
   res.status(404).send("Sorry can't find that!");
