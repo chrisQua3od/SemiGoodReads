@@ -6,6 +6,7 @@ const categories = require("./routes/categories");
 const author = require("./routes/authors");
 const books = require("./routes/books");
 const users = require("./routes/users");
+const register = require('./routes/register')
 
 const bodyParser = require("body-parser");
 
@@ -20,6 +21,8 @@ app.use("/categories", categories);
 app.use("/authors", author);
 app.use("/books", books);
 app.use("/users", users);
+app.use("/register", register);
+
 
 app.use((req, res) => {
   res.status(404).send("Sorry can't find that!");
