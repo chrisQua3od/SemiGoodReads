@@ -73,11 +73,20 @@ async function getBooksByStatus(userId, status) {
     return readBooks
 }
 
+async function getUser(req, res) {
+    try {
+        res.status(200).send(await UserModel.findById(req.params.id));
+
+    } catch (error) {
+        res.status(400).send("UserID not Found");
+    }
+}
 module.exports = {
     getBooks,
     getReadBooks,
     saveNewUser,
     getUsers,
     getCurrentlyReadingBooks,
-    getWantToReadBooks
+    getWantToReadBooks,
+    getUser
 }
