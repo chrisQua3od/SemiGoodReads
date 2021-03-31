@@ -3,21 +3,21 @@ const categoriesModel = require('./categories')
 const AuthorModel = require('./author')
 
 const booksSchema = new mongoose.Schema({
-  author: { type: mongoose.Schema.Types.ObjectId, ref: "Author" },
-  Cover: { type: String, required: true },
+  author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "author" },
+  cover: { type: String, required: true },
   name: { type: String, required: true },
-  AvgRate: { type: Number,  },
-  CategoryId: { type: mongoose.Schema.Types.ObjectId, ref: "categories" },
+  avgRate: { type: Number, },
+  categoryId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "categories" },
   sumAvg: { type: Number },
   countAvg: { type: Number },
   ///chris
-  reviews: [{ type: mongoose.Schema.Types.ObjectId,required: true, ref: 'users' }]
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }]
   ///chris
 })
 
 ///chris
 booksSchema.post('save', function (doc) {
-  categoriesModel.findByIdAndUpdate(doc.CategoryId, { $push: { books: doc._id } }, (err, posts) => {
+  categoriesModel.findByIdAndUpdate(doc.categoryId, { $push: { books: doc._id } }, (err, posts) => {
     console.log("hello")
   })
 });
@@ -30,16 +30,16 @@ booksSchema.post('save', function (doc) {
 
 });
 
-booksSchema.statics.FindAll = function(){
+booksSchema.statics.FindAll = function () {
   return this.find({})
 }
 
-booksSchema.statics.FindByCategory = function(){
-  return this.find({_id:"60550b98f614a772827c0a8f"})
+booksSchema.statics.FindByCategory = function () {
+  return this.find({ "_id": "60550b98f614a772827c0a8f" })
 }
 
-booksSchema.statics.FindByAuthor = function(){
-  return this.find({"_id":"60550b98f614a772827c0a8f"})
+booksSchema.statics.FindByAuthor = function () {
+  return this.find({ "_id": "60550b98f614a772827c0a8f" })
 }
 
 const booksModel = mongoose.model("books", booksSchema)

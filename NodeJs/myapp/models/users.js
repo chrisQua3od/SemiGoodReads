@@ -9,18 +9,18 @@ const UserSchema = new mongoose.Schema({
     lname: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-   ///chris
+    ///chris
     userReview: { type: mongoose.Schema.Types.ObjectId, ref: "books" },
-   ////chris
-    library: [{ books: { type: Number }, status: { type: String }, rating: { type: Number } }]
+    ////chris
+    library: [{ bookId: { type: mongoose.Schema.Types.ObjectId, ref: "books" }, status: { type: String }, rating: { type: Number } }]
 
 })
 /////chris
 UserSchema.post('save', function (doc) {
     booksModel.findByIdAndUpdate(doc.userReview, { $push: { reviews: doc._id } }, (err, posts) => {
-      console.log("hello")
+        console.log("hello")
     })
-  });
+});
 
 /////chris
 UserSchema.pre('save', function (next) {
@@ -34,5 +34,5 @@ UserSchema.pre('save', function (next) {
     }
 })
 
-const UserModel = mongoose.model("Users", UserSchema)
+const UserModel = mongoose.model("users", UserSchema)
 module.exports = UserModel;

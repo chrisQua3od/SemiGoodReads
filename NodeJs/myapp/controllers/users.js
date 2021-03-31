@@ -21,13 +21,7 @@ async function saveNewUser(req, res) {
     }
 }
 
-async function getUsers(req, res) {
-    try {
-        res.status(200).send(UserModel.find({}))
-    } catch (error) {
-        res.status(500).send(error.message)
-    }
-}
+
 
 //list all books for user
 async function getBooks(req, res) {
@@ -85,7 +79,6 @@ module.exports = {
     getBooks,
     getReadBooks,
     saveNewUser,
-    getUsers,
     getCurrentlyReadingBooks,
     getWantToReadBooks,
     getUser
