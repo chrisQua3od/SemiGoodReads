@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8000;
 const test = require("./routes/test");
 const categories = require("./routes/categories");
 const author = require("./routes/authors");

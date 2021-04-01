@@ -14,7 +14,8 @@ userRouter.get("/:id/currentlyReading", UserController.getCurrentlyReadingBooks)
 ///bassiony
 
 userRouter.get("/", async (req, res) => {
-    const user = await userModel.find({}).populate('books').exec()
+    // const author = await authorModel.find({}).populate("books").exec();
+    const user = await userModel.find({}).populate({ path: 'library', populate: { path: 'bookId' } }).exec()
     try {
         console.log(user);
         res.json(user)
@@ -23,6 +24,4 @@ userRouter.get("/", async (req, res) => {
         console.log(err)
     }
 })
-
-
 module.exports = userRouter;

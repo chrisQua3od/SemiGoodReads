@@ -26,7 +26,7 @@ async function saveNewUser(req, res) {
 //list all books for user
 async function getBooks(req, res) {
     try {
-        const userData = await UserModel.findById(req.params.id)
+        const userData = await UserModel.findById(req.params.id).populate({ path: 'library', populate: { path: 'bookId' } }).exec();
         res.status(200).send(userData.library)
     } catch (error) {
         res.status(400).send(error.message)
@@ -62,7 +62,7 @@ async function getWantToReadBooks(req, res) {
 }
 
 async function getBooksByStatus(userId, status) {
-    const allBooks = await UserModel.findOne({ _id: userId }).select({ library: 1, _id: 0 })
+    const allBooks = await UserModel.findOne({ _id: userId }).select({ library: 1, _id: 0 }).populate({ path: 'library', populate: { path: 'bookId' } }).exec()
     const readBooks = allBooks.library.filter((book) => book.status === status)
     return readBooks
 }
