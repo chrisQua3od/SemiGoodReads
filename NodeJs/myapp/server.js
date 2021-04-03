@@ -1,7 +1,12 @@
 const express = require("express");
 const app = express();
+<<<<<<< HEAD
 const PORT = process.env.PORT || 8000;
 //const test = require("./routes/test");
+=======
+const PORT = process.env.PORT || 7000;
+const test = require("./routes/test");
+>>>>>>> a6cdc413b466c1d95e31a3ffc295d7ad640f31a7
 const categories = require("./routes/categories");
 const author = require("./routes/authors");
 const books = require("./routes/books");
@@ -27,14 +32,16 @@ app.use("/register", register);
 app.use((req, res) => {
   res.status(404).send("Sorry can't find that!");
 });
-
 app.use((err, req, res) => {
   console.error(err.stack);
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
   res.status(500).send("Something broke!");
 });
 
 app.listen(PORT, (err) => {
-  if (err) console.error("hhhhhhhhhhhhhhhh",err);
+  if (err) console.error("hhhhhhhhhhhhhhhh", err);
   console.log(`App server is running and listening on port ${PORT}`);
-  
+
 });

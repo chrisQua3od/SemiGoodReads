@@ -21,13 +21,7 @@ async function saveNewUser(req, res) {
     }
 }
 
-async function getUsers(req, res) {
-    try {
-        res.status(200).send(UserModel.find({}))
-    } catch (error) {
-        res.status(500).send(error.message)
-    }
-}
+
 
 //list all books for user
 async function getBooks(req, res) {
@@ -73,11 +67,19 @@ async function getBooksByStatus(userId, status) {
     return readBooks
 }
 
+async function getUser(req, res) {
+    try {
+        res.status(200).send(await UserModel.findById(req.params.id));
+
+    } catch (error) {
+        res.status(400).send("UserID not Found");
+    }
+}
 module.exports = {
     getBooks,
     getReadBooks,
     saveNewUser,
-    getUsers,
     getCurrentlyReadingBooks,
-    getWantToReadBooks
+    getWantToReadBooks,
+    getUser
 }

@@ -3,24 +3,23 @@ const TestModel = require("../models/TestModel");
 var router = express.Router();
 let AMODEL = require("../models/TestModel");
 
-router
+router.get("/", function (req, res) {
+  //res.send("done")
+  AMODEL.FindAll()
+    .then((doc) => {
+      console.log(doc);
+      res.send(doc);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send(err);
+    });
+})
   .get("/", function (req, res) {
-    //res.send("done")
-    AMODEL.FindAll()
-      .then((doc) => {
-        console.log(doc);
-        res.send(doc);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.send(err);
-      });
-  })
-  .get("/", function (req, res) {
-    res.set({ 
-        'Access-control-Allow-Origin': '*'
-        }); 
-    return res.redirect("../afolder/index.html"); 
+    res.set({
+      'Access-control-Allow-Origin': '*'
+    });
+    return res.redirect("../afolder/index.html");
   })
   .post("/", (req, res) => {
     let fullname = TestModel({
