@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgxPaginationModule } from 'ngx-pagination'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { CategoriesComponent } from './components/categories/categories.component'
 import { RouterModule , Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { InterceptorService } from './services/interceptor.service';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -27,6 +31,7 @@ import { RouterModule , Routes } from '@angular/router';
     BooksComponent,
     AuthorsComponent,
     CategoriesComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -34,9 +39,15 @@ import { RouterModule , Routes } from '@angular/router';
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    ReactiveFormsModule
     // RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthService,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:InterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

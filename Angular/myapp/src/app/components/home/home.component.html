@@ -4,23 +4,23 @@
         <div class="col-2 d-flex flex-column p-3 text-white bg-primary sidenav">
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white">All</a>
+                    <a href="#" class="nav-link text-white" (click)="ngOnInit()">All</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">Currently Reading</a>
+                    <a href="#" class="nav-link text-white" (click)="getCurrentBooks()">Currently Reading</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">Want To Read</a>
+                    <a href="#" class="nav-link text-white" (click)="getWantToReadBooks()">Want To Read</a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white">Read</a>
+                    <a href="#" class="nav-link text-white" (click)="getReadBooks()">Read</a>
                 </li>
                 <li></li>
         
             </ul>
         </div>
         <div class="container col-9">
-            <h4 class="text-center shelf">all</h4>
+            <h4 class="text-center shelf">{{currentSection}}</h4>
             <div class="row bookView" *ngFor="let book of data| paginate:{
                 id:'listBooks',
                 itemsPerPage:5,
@@ -33,8 +33,14 @@
                 <div class="col-3">
                     <h5>{{book.name.first}}</h5>
                     <p>{{book.email}}</p>
-                    <p>{{book.gender}}</p>
-                    <p>shelve</p>
+                    <div class="input-group mb-3">
+                        <select class="form-select" id="inputGroupSelect01">
+                          
+                          <option value="1">Currently Reading</option>
+                          <option value="2">Want To Read</option>
+                          <option value="3">Read</option>
+                        </select>
+                      </div>
                 </div>
                 
                 <p class="col-7 summary">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates soluta ab nam laboriosam numquam doloribus fuga porro. Dolorum nemo enim optio iure? Delectus atque numquam deleniti nemo quod expedita beatae.

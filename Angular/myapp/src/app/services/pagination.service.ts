@@ -12,4 +12,19 @@ export class PaginationService {
     const url = "https://randomuser.me/api/?results=50"
     return this.http.get<any>(url)
   }
+
+  getCurrentlyReading():Observable<any>{
+    const url = "https://randomuser.me/api/?results=40"
+    return this.http.get<any>(url)
+  }
+
+  getWantToRead():Observable<any>{
+    const url = "https://randomuser.me/api/?results=30"
+    return this.http.get<any>(url)
+  }
+
+  getRead():Observable<any>{
+    const url = "https://randomuser.me/api/?results=20"
+    return this.http.get<any>(url)
+  }
 }
