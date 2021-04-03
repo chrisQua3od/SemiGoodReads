@@ -1,1 +1,9 @@
 <p>categories works!</p>
+<div class="card-group">
+    <div class="categories"*ngIf="categories.length > 0 ;else emptyList" >
+        <app-category *ngFor="let category of categories" [categoryInfo]="category"></app-category>
+    </div>
+  
+    <ng-template #emptyList>
+        <p>No categories in the list -> <a routerLink="">navigate to home</a></p>
+    </ng-template>

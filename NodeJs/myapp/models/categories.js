@@ -5,5 +5,6 @@ const categoriesSchema = new mongoose.Schema({
     books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'books' }]
 
 })
+
 const categoriesModel = mongoose.model("categories", categoriesSchema)
 module.exports = categoriesModel;

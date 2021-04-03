@@ -10,7 +10,5 @@ const Authorschema = new mongoose.Schema({
     books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'books' }]
 })
 
-Authorschema.statics.FindAll = function () {
-    return this.find({})
-  }
+
 module.exports = mongoose.model("author", Authorschema);

@@ -5,7 +5,7 @@ import { Author } from '../models/author';
 
 
 @Component({
-  selector: 'app-author',
+  selector: 'app-authors',
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.css']
 })
