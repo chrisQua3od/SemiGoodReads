@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -11,6 +10,8 @@ import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { CategoriesComponent } from './components/categories/categories.component'
 import { RouterModule , Routes } from '@angular/router';
+import { AuthorComponent } from './components/author/author.component';
+import { AuthorService } from './services/authors.service';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -27,6 +28,9 @@ import { RouterModule , Routes } from '@angular/router';
     BooksComponent,
     AuthorsComponent,
     CategoriesComponent,
+    AuthorComponent
+    
+
     
   ],
   imports: [
@@ -36,7 +40,9 @@ import { RouterModule , Routes } from '@angular/router';
     NgxPaginationModule,
     // RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    AuthorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

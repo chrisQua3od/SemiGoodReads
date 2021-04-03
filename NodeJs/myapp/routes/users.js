@@ -14,6 +14,7 @@ userRouter.get("/:id/currentlyReading", UserController.getCurrentlyReadingBooks)
 ///bassiony
 
 userRouter.get("/", async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:44496');
     const user = await userModel.find({}).populate('books').exec()
     try {
         console.log(user);
