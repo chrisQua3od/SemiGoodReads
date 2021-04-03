@@ -1,0 +1,7 @@
+<div class="alert alert-light" *ngIf="books.length > 0 ;else emptyList">
+    <app-user *ngFor="let book of books" [bookInfo]="book"></app-user>
+</div>
+
+<ng-template #emptyList>
+    <p>No users in the list -> <a routerLink="">navigate to home</a></p>
+</ng-template>
