@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8000;
-const test = require("./routes/test");
+//const test = require("./routes/test");
 const categories = require("./routes/categories");
 const author = require("./routes/authors");
 const books = require("./routes/books");
@@ -16,7 +16,7 @@ require("./dbConnection/mongo_connect");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("/test", test);
+//app.use("/test", test);
 app.use("/categories", categories);
 app.use("/authors", author);
 app.use("/books", books);
