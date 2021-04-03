@@ -11,17 +11,9 @@ userRouter.post("/", UserController.saveNewUser);
 userRouter.get("/:id/read", UserController.getReadBooks);
 userRouter.get("/:id/wantToRead", UserController.getWantToReadBooks);
 userRouter.get("/:id/currentlyReading", UserController.getCurrentlyReadingBooks);
+userRouter.patch("/:id/addBook", UserController.addBookForUser)
+userRouter.patch("/:id/addReview", UserController.addBookReview)
 ///bassiony
 
-userRouter.get("/", async (req, res) => {
-    // const author = await authorModel.find({}).populate("books").exec();
-    const user = await userModel.find({}).populate({ path: 'library', populate: { path: 'bookId' } }).exec()
-    try {
-        console.log(user);
-        res.json(user)
-    }
-    catch (err) {
-        console.log(err)
-    }
-})
+userRouter.get("/", UserController.getUsers);
 module.exports = userRouter;
