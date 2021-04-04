@@ -17,6 +17,9 @@ import { InterceptorService } from './services/interceptor.service';
 import { AuthorComponent } from './components/author/author.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AuthorService } from './services/authors.service';
+import { UserComponent } from './components/user/user.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -36,6 +39,9 @@ import { AuthorService } from './services/authors.service';
     LoginComponent,
     AuthorComponent,
     CategoryComponent,
+    UserComponent,
+    UsersComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +54,7 @@ import { AuthorService } from './services/authors.service';
   providers: [
     AuthService,
     AuthorService,
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
