@@ -42,9 +42,12 @@ categoriesRouter.post("/", async (req, res) => {
     //     })
     // =======
     .get("/", async (req, res) => {
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
         const category = await categoriesModel.find({}).populate("books").exec()
         try {
+           
             console.log(category);
+           
             res.json(category)
         }
         catch (err) {

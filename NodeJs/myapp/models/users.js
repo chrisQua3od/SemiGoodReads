@@ -2,8 +2,6 @@ const mongoose = require("mongoose");
 const booksModel = require('./books')
 const bcrypt = require('bcrypt')
 const UserSchema = new mongoose.Schema({
-
-
     photo: { type: String },
     fname: { type: String, required: true },
     lname: { type: String, required: true },
@@ -26,6 +24,7 @@ UserSchema.post('save', function (doc) {
 });
 
 /////chris
+
 UserSchema.pre('save', function (next) {
     const doc = this
     if (doc.isNew) {

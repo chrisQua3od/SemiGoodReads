@@ -24,7 +24,7 @@ bookRouter.post("/", async (req, res) => {
 
 })
     .get("/", async (req, res) => {
-        const book = await bookModel.FindByAuthor().populate("author").exec();
+        const book = await bookModel.find({}).populate("author").exec();
         try {
             console.log(book);
             res.json(book)
@@ -45,7 +45,8 @@ bookRouter.post("/", async (req, res) => {
             console.log(err)
         }
         console.log("Done");
-    }).delete("/:id", async (req, res) => {
+    })
+    .delete("/:id", async (req, res) => {
         const result = await bookModel.findByIdAndRemove({ _id: req.params.id }, { author: req.body.author, cover: req.body.cover, name: req.body.name, categoryId: req.body.categoryId })
         try {
             res.json(result);

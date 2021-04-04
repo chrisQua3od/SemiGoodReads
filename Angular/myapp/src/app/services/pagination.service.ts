@@ -9,7 +9,7 @@ export class PaginationService {
   constructor(private http:HttpClient) { }
 
   getData():Observable<any>{
-    const url = "https://randomuser.me/api/?results=50"
+    const url = "http://localhost:8000/authors"
     return this.http.get<any>(url)
   }
 

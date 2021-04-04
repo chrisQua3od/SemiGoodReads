@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { InterceptorService } from './services/interceptor.service';
+import { AuthorComponent } from './components/author/author.component';
+import { CategoryComponent } from './components/category/category.component';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -32,6 +33,10 @@ import { InterceptorService } from './services/interceptor.service';
     AuthorsComponent,
     CategoriesComponent,
     LoginComponent,
+    AuthorComponent,
+    CategoryComponent
+    
+
     
   ],
   imports: [
@@ -42,7 +47,7 @@ import { InterceptorService } from './services/interceptor.service';
     ReactiveFormsModule
     // RouterModule.forRoot(routes)
   ],
-  providers: [AuthService,
+  providers: [AuthService,AuthorService
   {
     provide:HTTP_INTERCEPTORS,
     useClass:InterceptorService,

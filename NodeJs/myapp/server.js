@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8000;
 const test = require("./routes/test");
+// =======
+// const PORT = process.env.PORT || 7000;
+// const test = require("./routes/test");
+// >>>>>>> a6cdc413b466c1d95e31a3ffc295d7ad640f31a7
 const categories = require("./routes/categories");
 const author = require("./routes/authors");
 const books = require("./routes/books");
@@ -18,7 +22,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("/test", test);
+//app.use("/test", test);
 app.use("/categories", categories);
 app.use("/authors", author);
 app.use("/books", books);

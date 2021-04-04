@@ -39,7 +39,7 @@ booksSchema.statics.FindByCategory = function () {
 }
 
 booksSchema.statics.FindByAuthor = function () {
-  return this.find({ "_id": "60550b98f614a772827c0a8f" })
+  return this.find({ "_id": "60683996d16f4a2fc8279938" })
 }
 
 const booksModel = mongoose.model("books", booksSchema)
