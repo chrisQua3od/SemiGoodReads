@@ -12,6 +12,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { RouterModule , Routes } from '@angular/router';
 import { AuthorComponent } from './components/author/author.component';
 import { AuthorService } from './services/authors.service';
+import { CategoryComponent } from './components/category/category.component';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -28,7 +29,8 @@ import { AuthorService } from './services/authors.service';
     BooksComponent,
     AuthorsComponent,
     CategoriesComponent,
-    AuthorComponent
+    AuthorComponent,
+    CategoryComponent
     
 
     

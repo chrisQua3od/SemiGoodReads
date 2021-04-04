@@ -1,15 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,OnDestroy } from '@angular/core';
+import { PaginationService } from 'src/app/services/pagination.service';
+import { CategoryService } from 'src/app/services/categories.service';
+import { Category } from '../models/category';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit,OnDestroy {
 
-  constructor() { }
+  categories:Array<Category> = []
+  totalRecords:string = ''
+  page:number=1
+  constructor(private myService:CategoryService) { }
 
-  ngOnInit(): void {
+
+  subscriber:any;
+
+  ngOnDestroy(): void {
+    this.subscriber.unsubscribe()
   }
 
+  ngOnInit(): void {
+    this.subscriber = this.myService.getCategories()
+      .subscribe((response:any)=>{
+        console.log(response)
+        this.categories= response.body
+        this.totalRecords=response.results.length;
+        console.log(this.categories)
+      },
+      (err)=>{
+        console.log(err)
+      }  
+    )
+  }
+ 
+
 }
+
+
+

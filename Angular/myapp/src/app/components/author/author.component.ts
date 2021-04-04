@@ -9,15 +9,18 @@ import { Author} from '../models/author';
 })
 export class AuthorComponent implements OnInit {
 
+
   constructor() {}
 
   @Input('authorInfo') author:Author = {
     photo: '' ,
     fname: '',
     lname: ''
+
   }
 
 
   ngOnInit(): void {
+    console.log(this.author)
   }
 }
