@@ -1,0 +1,32 @@
+<div class="sign-in">
+    <h1>GoodReads</h1>
+    <input class="btn" type="button" value="Log-in">
+    <div class="data">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Password">
+    </div>
+    <div class="data">
+        <i class="far fa-envelope"></i>
+        <input type="email" placeholder="email">
+    </div>
+</div>
+
+<div class="sign-up">
+    <h2>Sign up here</h2>
+    <form action="" [formGroup]="registerationForm" (ngSubmit)="onSubmit()">
+        <input formControlName='firstName' class="t" type="text" placeholder="FirstName ...">
+        <span class="error text-danger text-center" *ngIf="name?.invalid && name?.touched">***Required</span>
+        <input formControlName='lastName' class="t" type="text" placeholder="LastName ...">
+        <span class="error text-danger text-center" *ngIf="lname?.invalid && lname?.touched">***Required</span>
+        <input formControlName='email' class="t" type="email" placeholder="Email ...">
+        <span class="error text-danger text-center" *ngIf="email?.invalid && email?.touched">***invalid email</span>
+        <input formControlName='password' class="t" type="password" placeholder="Password ...">
+        <input formControlName='confirmPassword' class="t" type="password" placeholder="Retype Password ...">
+        <div *ngIf="f.confirmPassword?.errors?.mustMatch">Passwords must match</div>
+        
+        <button type="submit" >Submit</button>
+        
+    </form>
+
+</div>
+<!-- [disabled]="!registerationForm.valid" -->

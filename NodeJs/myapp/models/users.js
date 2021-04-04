@@ -8,14 +8,17 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
     ///chris
-    userReview: { type: mongoose.Schema.Types.ObjectId, ref: "books" },
+    // userReview: [{ type: mongoose.Schema.Types.ObjectId, ref: "books" },{type:String}],
     ////chris
-    library: [{ bookId: { type: mongoose.Schema.Types.ObjectId, ref: "books" }, status: { type: String }, rating: { type: Number } }]
-
+    library: [{
+        bookId: { type: mongoose.Schema.Types.ObjectId, ref: "books" }, status: { type: String },
+        rating: { type: Number }, review: { type: String }
+    }]
 })
 /////chris
 UserSchema.post('save', function (doc) {
-    booksModel.findByIdAndUpdate(doc.userReview, { $push: { reviews: doc._id } }, (err, posts) => {
+    console.log('%s has been saved', doc.library[0].review);
+    booksModel.findByIdAndUpdate(doc.library[0].bookId, { $push: { reviews: doc._id } }, (err, posts) => {
         console.log("hello")
     })
 });
@@ -29,7 +32,6 @@ UserSchema.pre('save', function (next) {
             doc.password = hashedText;
             next()
         })
-
     }
 })
 

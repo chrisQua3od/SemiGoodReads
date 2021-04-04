@@ -12,4 +12,19 @@ export class PaginationService {
     const url = "http://localhost:8000/authors"
     return this.http.get<any>(url)
   }
+
+  getCurrentlyReading():Observable<any>{
+    const url = "https://randomuser.me/api/?results=40"
+    return this.http.get<any>(url)
+  }
+
+  getWantToRead():Observable<any>{
+    const url = "https://randomuser.me/api/?results=30"
+    return this.http.get<any>(url)
+  }
+
+  getRead():Observable<any>{
+    const url = "https://randomuser.me/api/?results=20"
+    return this.http.get<any>(url)
+  }
 }

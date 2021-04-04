@@ -9,6 +9,7 @@ import { Author } from '../models/author';
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.css']
 })
+
 export class AuthorsComponent implements OnInit,OnDestroy {
   // data:Array<any>=[]
   // totalRecords:string = ''

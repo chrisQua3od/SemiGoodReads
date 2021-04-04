@@ -34,23 +34,13 @@ authorRouter.post("/", async (req, res) => {
             console.log(err)
         }
     }).get("/:id", async (req, res) => {
-
-
-
         const { id } = req.params
-
         try {
-
             const author = await authorModel.findById(id).populate("books").exec();
-
             res.json(author)
-
         }
-
         catch (err) {
-
             console.log(err);
-
         }
 
     }).delete("/:id", async (req, res) => {

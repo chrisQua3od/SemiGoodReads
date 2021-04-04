@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit,Input,OnDestroy } from '@angular/core';
 import { PaginationService } from 'src/app/services/pagination.service';
 import { CategoryService } from 'src/app/services/categories.service';
