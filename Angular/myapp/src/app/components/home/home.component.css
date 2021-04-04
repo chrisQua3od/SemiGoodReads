@@ -1,0 +1,23 @@
+.sidenav{
+    width: 200px;
+    height: 400px;
+    margin-left: 0;
+}
+
+#photo{
+    width: 150px;
+    height: 180px;
+}
+
+.bookView{
+    margin-top: 15px;
+    margin-left: 15px;
+    height: 200px;
+    border-bottom: 1px solid black;
+}
+
+.shelf{
+    margin-top: 10px;
+    border-bottom: 1px solid black;
+    width: 10%;
+}
