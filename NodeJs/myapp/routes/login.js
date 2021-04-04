@@ -10,9 +10,9 @@ loginRoute.post("/", async (req, res) => {
     const useree = await UserModel.findOne({ email: req.body.email })
     console.log(useree)
     if (!useree) {
-       
+
       res.status(403).json({
-          
+
       })
     }
     else {
@@ -23,9 +23,9 @@ loginRoute.post("/", async (req, res) => {
       }
       else {
         const token = await jwt.sign({ user: useree }, "secretkeyaya123")
-         console.log("ok")
+        console.log("ok")
         res.json({ token })
-     }
+      }
     }
   }
   catch (err) {
