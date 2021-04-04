@@ -5,7 +5,7 @@ import { Author } from '../models/author';
 
 
 @Component({
-  selector: 'app-authors',
+  ///selector: 'app-authors',
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.css']
 })
@@ -14,6 +14,8 @@ export class AuthorsComponent implements OnInit,OnDestroy {
   // totalRecords:string = ''
   // page:number=1
   authors:Array<Author> = []
+  totalRecords:string = ''
+  page:number=1
   constructor(private myService:AuthorService) { }
 
 
@@ -28,6 +30,7 @@ export class AuthorsComponent implements OnInit,OnDestroy {
       .subscribe((response:any)=>{
         console.log(response)
         this.authors= response.body
+        this.totalRecords=response.results.length;
         console.log(this.authors)
       },
       (err)=>{

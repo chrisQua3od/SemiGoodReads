@@ -10,7 +10,9 @@ import { Category } from '../models/category';
 })
 export class CategoriesComponent implements OnInit,OnDestroy {
 
- categories:Array<Category> = []
+  categories:Array<Category> = []
+  totalRecords:string = ''
+  page:number=1
   constructor(private myService:CategoryService) { }
 
 
@@ -25,6 +27,7 @@ export class CategoriesComponent implements OnInit,OnDestroy {
       .subscribe((response:any)=>{
         console.log(response)
         this.categories= response.body
+        this.totalRecords=response.results.length;
         console.log(this.categories)
       },
       (err)=>{
