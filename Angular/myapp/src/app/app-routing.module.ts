@@ -7,9 +7,12 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UserComponent } from './components/user/user.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'user', component: UsersComponent },
   { path: 'books', component: BooksComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'login', component: LoginComponent },
