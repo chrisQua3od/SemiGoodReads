@@ -4,18 +4,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import { NgxPaginationModule } from 'ngx-pagination'
+import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
-import { CategoriesComponent } from './components/categories/categories.component'
-import { RouterModule , Routes } from '@angular/router';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { InterceptorService } from './services/interceptor.service';
 import { AuthorComponent } from './components/author/author.component';
 import { CategoryComponent } from './components/category/category.component';
+import { AuthorService } from './services/authors.service';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -34,25 +35,25 @@ import { CategoryComponent } from './components/category/category.component';
     CategoriesComponent,
     LoginComponent,
     AuthorComponent,
-    CategoryComponent
-    
-
-    
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     // RouterModule.forRoot(routes)
   ],
-  providers: [AuthService,AuthorService
-  {
-    provide:HTTP_INTERCEPTORS,
-    useClass:InterceptorService,
-    multi:true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthService,
+    AuthorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

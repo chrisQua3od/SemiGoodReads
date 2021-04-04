@@ -16,12 +16,12 @@ const UserSchema = new mongoose.Schema({
     }]
 })
 /////chris
-UserSchema.post('save', function (doc) {
-    console.log('%s has been saved', doc.library[0].review);
-    booksModel.findByIdAndUpdate(doc.library[0].bookId, { $push: { reviews: doc._id } }, (err, posts) => {
-        console.log("hello")
-    })
-});
+// UserSchema.post('save', function (doc) {
+//     console.log('%s has been saved', doc.library[0].review);
+//     booksModel.findByIdAndUpdate(doc.library[0].bookId, { $push: { reviews: doc._id } }, (err, posts) => {
+//         console.log("hello")
+//     })
+// });
 
 /////chris
 
