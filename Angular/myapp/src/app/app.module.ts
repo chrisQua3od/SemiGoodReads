@@ -20,6 +20,7 @@ import { AuthorService } from './services/authors.service';
 import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { UsersService } from './services/users.service';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -54,7 +55,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
   providers: [
     AuthService,
     AuthorService,
-
+    UsersService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
