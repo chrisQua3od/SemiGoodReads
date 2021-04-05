@@ -1,5 +1,5 @@
 const UserModel = require('../models/users')
-
+const BookModel = require('../models/books')
 
 //Save new User
 async function saveNewUser(req, res) {
@@ -21,8 +21,6 @@ async function saveNewUser(req, res) {
         console.log(err)
     }
 }
-
-
 
 //list all books for user
 async function getBooks(req, res) {
@@ -69,7 +67,7 @@ async function getBooksByStatus(userId, status) {
 }
 async function addBookForUser(req, res) {
     try {
-        await UserModel.findByIdAndUpdate(req.params.id, { $push: { library: req.body } })
+        await UserModel.findByIdAndUpdate(req.params.id, { $push: { library: req.body }, $set: { rating: 0 } })
         res.status(200).send("Book Added Succeffully");
     } catch (erro) {
         res.status(400).send("bad request")
@@ -78,7 +76,7 @@ async function addBookForUser(req, res) {
 
 async function getUser(req, res) {
     try {
-        res.status(200).send(await UserModel.findById(req.params.id));
+        res.status(200).send(await UserModel.findById(req.params.id).populate({ path: 'library', populate: { path: 'bookId' } }).exec());
 
     } catch (error) {
         res.status(400).send("UserID not Found");
@@ -103,12 +101,60 @@ async function addBookReview(req, res) {
                 arrayFilters: [{ "el.bookId": req.body.bookId }],
                 new: true
             })
-        // {$set: {"myArray.$[el].value": 424214 } },
-
+        await BookModel.findByIdAndUpdate(req.body.bookId, { $push: { reviews: req.params.id } });
         res.status(200).send("Review Added Succeffully");
     } catch (error) {
         console.log(error.message)
         res.status(500).send("bad request")
+    }
+}
+async function addBookRating(req, res) {
+    try {
+        await UserModel.findByIdAndUpdate(req.params.id,
+            { '$set': { 'library.$[el].rating': req.body.rating } },
+            {
+                arrayFilters: [{ "el.bookId": req.body.bookId }],
+                new: true
+            })
+        await BookModel.findByIdAndUpdate(req.body.bookId, { $inc: { sumAvg: req.body.rating, countAvg: 1 } });
+        res.status(200).send("Rating Added Succeffully");
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send("bad request")
+    }
+}
+async function editBookRating(req, res) {
+    const user = await UserModel.findById(req.params.id, { library: { $elemMatch: { bookId: req.body.bookId } } }).select('-_id');
+    const oldRating = user.library[0].rating;
+    try {
+        await UserModel.findByIdAndUpdate(req.params.id,
+            { '$set': { 'library.$[el].rating': req.body.rating } },
+            {
+                arrayFilters: [{ "el.bookId": req.body.bookId }],
+                new: true
+            })
+        const editRating = req.body.rating - oldRating;
+        await BookModel.findByIdAndUpdate(req.body.bookId, { $inc: { sumAvg: editRating } });
+        res.status(200).send("Rating Added Succeffully");
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send("bad request")
+    }
+}
+async function updateUser(req, res) {
+    const { id } = req.params;
+    const user = req.body
+    try {
+        const updatedUser = {
+            ...(user.fname ? { fname: user.fname } : {}),
+            ...(user.lname ? { lname: user.lname } : {}),
+            ...(user.email ? { email: user.email } : {}),
+            ...(user.photo ? { photo: user.photo } : {})
+        }
+        const result = await UserModel.findOneAndUpdate({ _id: id }, updatedUser)
+        res.json(result)
+    } catch (error) {
+        return console.log(error);
     }
 }
 module.exports = {
@@ -120,5 +166,8 @@ module.exports = {
     getUser,
     addBookForUser,
     getUsers,
-    addBookReview
+    addBookReview,
+    addBookRating,
+    editBookRating,
+    updateUser
 }
