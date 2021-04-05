@@ -1,6 +1,13 @@
 export interface Author {
+    _id:string,
     photo: String ,
     fname: String,
-    lname: String
+    lname: String,
+    dateOfBirth:string,
+    books :[
+        {
+            name:string
+            cover:string
+        }
+    ]
 }
-

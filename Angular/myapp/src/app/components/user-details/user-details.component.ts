@@ -24,8 +24,15 @@ export class UserDetailsComponent implements OnInit ,OnDestroy{
     fname:'',
     lname:'',
     photo:'',
-    dateOfBirth:''
+    dateOfBirth:'',
+    books:[
+      {
+        name:'',
+        cover:''
+      }
+    ]
   }
+
   subscriber:any
 
   ngOnInit(): void {
@@ -36,15 +43,5 @@ export class UserDetailsComponent implements OnInit ,OnDestroy{
     },(err)=>{
       console.log(err)
     })
-  }
-  deleteSt(){
-    // this.subscriber = this.myService.deleteStudent(this.myActivatedRoute.snapshot.params.id)
-    // .subscribe((student:any)=>{
-    //   console.log(student)
-    //   this.student = student
-    //   this.router.navigate(['']);
-    // },(err)=>{
-    //   console.log(err)
-    // })  
   }
 }

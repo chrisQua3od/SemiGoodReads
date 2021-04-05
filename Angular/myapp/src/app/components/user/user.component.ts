@@ -25,12 +25,25 @@ export class UserComponent implements OnInit {
     fname:'',
     lname:'',
     photo:'',
-    dateOfBirth:''
+    dateOfBirth:'',
+    books:[
+      {
+        name:'',
+        cover:''
+      }
+    ]
   }
   
 
   @Input('catInfo') category:Category = {
-    name:''
+    _id:'',
+    name:'',
+    books:[
+        {
+            name:'',
+            cover:''
+        }
+      ]
   }
     
   @Input('bookInfo') book:UserBooks = {

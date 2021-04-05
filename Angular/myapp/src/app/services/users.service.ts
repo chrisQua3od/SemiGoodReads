@@ -15,6 +15,7 @@ export class UsersService {
   readonly userBooks: string = "http://localhost:8000/users/606623d776e86ac9ad8902fd/books";
   readonly catURL: string = "http://localhost:8000/categories";
   readonly authURL: string = "http://localhost:8000/authors";
+  readonly bookURL: string = "http://localhost:8000/books";
   
   getUsers() {
   return this.client.get(this.baseURL,{observe:'response'})
@@ -28,6 +29,14 @@ export class UsersService {
     return this.client.get(this.catURL, {observe:'response'})
   }
 
+  getBooks(){
+    return this.client.get(this.bookURL, {observe:'response'})
+  }
+
+  getBookById(id: number) {
+    return this.client.get(`${this.bookURL}/${id}`)
+  }
+
   getUserBooks() {
     return this.client.get(this.userBooks,{observe:'response'})
   }
@@ -36,8 +45,12 @@ export class UsersService {
     return this.client.get(`${this.baseURL}/${id}`)
   }
 
-  getAuthorById(id: number) {
+  getAuthorById(id: string) {
     return this.client.get(`${this.authURL}/${id}`)
+  }
+
+  getCategoryById(id: string) {
+    return this.client.get(`${this.catURL}/${id}`)
   }
   
 

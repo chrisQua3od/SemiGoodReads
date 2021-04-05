@@ -13,10 +13,17 @@ export class AuthorComponent implements OnInit {
   constructor() {}
 
   @Input('authorInfo') author:Author = {
+    _id:'',
     photo: '' ,
     fname: '',
-    lname: ''
-
+    lname: '',
+    dateOfBirth:'',
+    books :[
+      {
+        name:'',
+        cover:''
+      }
+    ]
   }
 
 

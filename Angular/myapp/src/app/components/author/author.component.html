@@ -3,6 +3,8 @@
     <img  src="{{author.photo}}" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title"> <a href="#" style="text-decoration: none;">{{author.fname}} {{author.lname}}</a></h5>
+        <a [routerLink]="author._id.toString()">More Details</a>
+        
         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
         <!-- <a href="#" class="btn btn-primary" style="background-color: #dc3545 ;color: white;">See More ?</a> -->
     <!-- </div> -->
