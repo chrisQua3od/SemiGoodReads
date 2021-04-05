@@ -21,6 +21,7 @@ import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UsersService } from './services/users.service';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -43,6 +44,7 @@ import { UsersService } from './services/users.service';
     UserComponent,
     UsersComponent,
     UserDetailsComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,

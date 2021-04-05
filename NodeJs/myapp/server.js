@@ -13,6 +13,7 @@ const author = require("./routes/authors");
 const books = require("./routes/books");
 const users = require("./routes/users");
 const register = require('./routes/register')
+const admin = require('./routes/admin')
 const cors = require('cors')
 
 const bodyParser = require("body-parser");
@@ -59,7 +60,7 @@ app.use("/authors", author);
 app.use("/books", books);
 app.use("/users", users);
 app.use("/register", register);
-
+app.use("/admin",admin)
 
 app.use((req, res) => {
   res.status(404).send("Sorry can't find that!");
