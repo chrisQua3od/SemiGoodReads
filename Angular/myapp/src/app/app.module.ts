@@ -26,6 +26,7 @@ import { AuthorDetailsComponent } from './components/author-details/author-detai
 import { UsersService } from './services/users.service';
 import { CommonModule } from '@angular/common';  
 import { CategoryDetailsComponent } from './components/category-details/category-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -60,6 +61,7 @@ import { CategoryDetailsComponent } from './components/category-details/category
     HttpClientModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    NgbModule,
     // RouterModule.forRoot(routes)
   ],
   providers: [
