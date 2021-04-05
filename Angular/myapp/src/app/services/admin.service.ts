@@ -15,8 +15,8 @@ import { Admin } from './../components/models/admin';
     
    
     
-    getAdminByName(adminName: string) {
-      return this.client.get(`${this.baseURL}/${adminName}`)
+    getAdminByName(admin: Admin) {
+      return this.client.post(`${this.baseURL}/${admin.adminName}`,admin)
     }
     addAdmin(admin:Admin){
         return this.client.post(this.baseURL,admin)

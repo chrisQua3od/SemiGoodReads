@@ -60,14 +60,14 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-  
-    this.subscriber = this.adminService.getAdminByName(this.loginForm.value.adminName)
+  console.log(this.loginForm.value)
+    this.subscriber = this.adminService.getAdminByName(this.loginForm.value)
     .subscribe((response:any)=>{
       
       this.admins= response.adminName
-     
+      
       console.log(response)
-      console.log(this.admins)
+      
     },
     (err)=>{
       console.log(err)
@@ -76,13 +76,14 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
 //   this.subscriber = this.adminService.addAdmin(this.admins)
 //   .subscribe((response:any)=>{
     
-//     this.admins= response.adminName
-   
-//     console.log(response)
-//     console.log(this.admins)
+//     this.admins.adminName= response.adminName
+//    console.log("entered")
+//     // console.log(response)
+//     // console.log(this.admins)
 //   },
 //   (err)=>{
-//     console.log(err)
+//     console.log("out")
+//     // console.log(err)
 //   }
 // )
 
