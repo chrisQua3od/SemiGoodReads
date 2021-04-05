@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
-import { Author } from '../models/user';
+import { Author } from '../models/author';
 import {Router} from '@angular/router'
 
 @Component({
@@ -27,6 +27,7 @@ export class AuthorDetailsComponent implements OnInit ,OnDestroy{
     dateOfBirth:'',
     books :[
       {
+        _id:'',
         name:'',
         cover:''
       }

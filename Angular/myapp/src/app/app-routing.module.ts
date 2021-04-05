@@ -20,10 +20,12 @@ const routes: Routes = [
   { path: 'books/:id', component: BookDetailsComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'categories/:id', component: CategoryDetailsComponent },
+  { path: 'categories/:id/:id', component: BookDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'authors', pathMatch: 'full' },
   { path: 'authors', component: AuthorsComponent },
   { path: 'authors/:id', component: AuthorDetailsComponent },
+  { path: 'authors/:id/:id', component: BookDetailsComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

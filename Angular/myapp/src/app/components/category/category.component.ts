@@ -17,6 +17,7 @@ export class CategoryComponent implements OnInit {
    name:'',
    books : [
      {
+       _id:'',
       name:'',
       cover:''
      }

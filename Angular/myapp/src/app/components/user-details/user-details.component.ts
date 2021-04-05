@@ -27,6 +27,7 @@ export class UserDetailsComponent implements OnInit ,OnDestroy{
     dateOfBirth:'',
     books:[
       {
+        _id:'',
         name:'',
         cover:''
       }

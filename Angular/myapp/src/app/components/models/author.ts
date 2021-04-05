@@ -6,6 +6,7 @@ export interface Author {
     dateOfBirth:string,
     books :[
         {
+            _id:string
             name:string
             cover:string
         }

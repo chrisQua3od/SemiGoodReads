@@ -24,6 +24,7 @@ export class CategoryDetailsComponent implements OnInit ,OnDestroy{
     name:'',
     books:[
       {
+        _id:'',
           name:'',
           cover:''
       }

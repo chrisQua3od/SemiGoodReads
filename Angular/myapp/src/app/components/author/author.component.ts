@@ -20,6 +20,7 @@ export class AuthorComponent implements OnInit {
     dateOfBirth:'',
     books :[
       {
+        _id:'',
         name:'',
         cover:''
       }

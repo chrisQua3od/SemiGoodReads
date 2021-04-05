@@ -22,7 +22,8 @@ export class BookDetailsComponent implements OnInit ,OnDestroy{
   books:Book = {
     _id:'',
     name:'',
-    cover:''
+    cover:'',
+    categoryId:''
   }
   subscriber:any
 

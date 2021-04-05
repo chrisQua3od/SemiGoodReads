@@ -10,6 +10,7 @@ export interface Category{
     name:string
     books:[
         {
+            _id:string
             name:string
             cover:string
         }
@@ -20,6 +21,7 @@ export interface Book{
     _id:string
     name:string
     cover:string
+    categoryId:string
 }
 
 export interface Author {
@@ -30,7 +32,8 @@ export interface Author {
     lname: String,
     books :[
         {
-            name:string,
+            _id:string
+            name:string
             cover:string
         }
     ]

@@ -15,7 +15,8 @@ export class BookComponent implements OnInit {
   @Input('bookInfo') book:Book = {
     _id:'',
    name:'',
-   cover:''
+   cover:'',
+   categoryId:''
   }
 
 

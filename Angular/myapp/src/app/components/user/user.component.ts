@@ -28,6 +28,7 @@ export class UserComponent implements OnInit {
     dateOfBirth:'',
     books:[
       {
+        _id:'',
         name:'',
         cover:''
       }
@@ -40,6 +41,7 @@ export class UserComponent implements OnInit {
     name:'',
     books:[
         {
+          _id:'',
             name:'',
             cover:''
         }
