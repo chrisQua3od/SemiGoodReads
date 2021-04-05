@@ -8,8 +8,8 @@ categoriesRouter.post("/", async (req, res) => {
 
     const categoriesInstance = new categoriesModel({
         name: req.body.name,
-        categoryId: req.body.categoryId,
-        books: req.body.books
+        // categoryId: req.body.categoryId,
+        //books: req.body?.books
     })
 
     const category = await categoriesInstance.save()
@@ -73,9 +73,11 @@ categoriesRouter.post("/", async (req, res) => {
             const category = await categoriesModel.findById(id);
             if (category.books.length < 1) {
                 const deletedcategory = await categoriesModel.deleteOne({ _id: id });
-                response.status(200).send("categoriesModel Deleted Correctly")
+                response.status(200).send({ deleted: true, message: "Category deleted succeffully" });
             } else {
-                response.send("Can't delete categroy contains books");
+                response.status(202).send({
+                    deleted: false, message: "This Category Contains books"
+                });
             }
         } catch (error) {
             response.status(400).send(error.message);
@@ -89,10 +91,9 @@ categoriesRouter.post("/", async (req, res) => {
             ...(category.categoryId ? { categoryId: category.categoryId } : {})
 
         }
-
         try {
             const updatededcategory = await categoriesModel.findOneAndUpdate({ _id: id }, updatedcategory)
-            response.json(updatededcategory)
+            response.status(200).send({ message: "category edited succeffully" })
         } catch (error) {
             return console.log(error);
         }

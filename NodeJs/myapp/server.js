@@ -47,8 +47,6 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/login", loginRouter)
-
-//app.use("/test", test);
 app.use("/categories", categories);
 app.use("/authors", author);
 app.use("/books", books);

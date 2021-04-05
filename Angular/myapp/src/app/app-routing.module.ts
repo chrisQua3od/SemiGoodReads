@@ -9,9 +9,11 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'user', component: UsersComponent },
   { path: 'books', component: BooksComponent },
   { path: 'categories', component: CategoriesComponent },

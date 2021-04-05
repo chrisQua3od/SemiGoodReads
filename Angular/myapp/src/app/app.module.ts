@@ -21,13 +21,13 @@ import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UsersService } from './services/users.service';
-
-// const routes:Routes = [
-//   {path:'',component:HomeComponent},
-//   {path:'books',component:BooksComponent},
-//   {path:'categories',component:CategoriesComponent},
-//   {path:'author',component:AuthorsComponent},
-// ]
+import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { CategoryPanelComponent } from './components/admin/category-panel/category-panel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddItemComponent } from './components/add-item/add-item.component';
+import { EditItemComponent } from './components/edit-item/edit-item.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,12 @@ import { UsersService } from './services/users.service';
     UserComponent,
     UsersComponent,
     UserDetailsComponent,
+    AdminHeaderComponent,
+    AdminPanelComponent,
+    AdminComponent,
+    CategoryPanelComponent,
+    AddItemComponent,
+    EditItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +56,8 @@ import { UsersService } from './services/users.service';
     HttpClientModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    NgbModule,
+
     // RouterModule.forRoot(routes)
   ],
   providers: [
