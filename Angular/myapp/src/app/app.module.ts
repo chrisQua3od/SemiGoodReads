@@ -21,6 +21,10 @@ import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UsersService } from './services/users.service';
+import { RegisterComponent } from './components/register/register.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeService } from './services/home.service';
+import { RatingModule } from 'ng-starrating';
 
 // const routes:Routes = [
 //   {path:'',component:HomeComponent},
@@ -43,6 +47,7 @@ import { UsersService } from './services/users.service';
     UserComponent,
     UsersComponent,
     UserDetailsComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,12 +55,15 @@ import { UsersService } from './services/users.service';
     HttpClientModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    NgbModule,
+    RatingModule
     // RouterModule.forRoot(routes)
   ],
   providers: [
     AuthService,
     AuthorService,
     UsersService,
+    HomeService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
