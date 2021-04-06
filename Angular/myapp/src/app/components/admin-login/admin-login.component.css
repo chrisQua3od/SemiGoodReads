@@ -1,0 +1,73 @@
+:host(body){
+    /* margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url(/home/ali/iti/Good-Reads/goodReadsAngular/src/assets/img/read.jpeg); 
+    background-size: cover; */
+    background-color: green;
+}
+
+
+
+
+
+.login{
+    padding: 10px;
+    float: right;
+    background-color: #000000c2;
+    color: white;
+    box-sizing: border-box;
+    width: 450px;
+    height: auto;
+    margin-right: 293px;
+    margin-top: 110px;
+    border-radius: 20px;
+}
+
+h3{
+    text-align: center;
+}
+
+.t{
+    overflow: hidden;
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.10);
+    outline: none;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px dotted #777977;
+    font-size: 18px;
+    font-weight: bold;
+    color: #777977;
+    border-radius: 5px;
+}
+
+form button[type=submit]{
+    width: 50%;
+    padding: 5px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    margin-left: 24%;
+    outline: none;
+    border: none;
+    background:none;
+    color:white;
+    border: 2px solid #777977;
+    border-radius: 10px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+form button[type=submit]:hover{
+    background-color: firebrick;
+}
+
+i{
+    float: right;
+}
+input{
+
+    width: 150px;
+}
