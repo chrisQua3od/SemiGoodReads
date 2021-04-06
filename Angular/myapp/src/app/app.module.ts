@@ -21,6 +21,10 @@ import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UsersService } from './services/users.service';
+import { RegisterComponent } from './components/register/register.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeService } from './services/home.service';
+import { RatingModule } from 'ng-starrating';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 // const routes:Routes = [
@@ -55,6 +59,7 @@ import { EditBookComponent } from './components/admin/books-panel/edit-book/edit
     UserComponent,
     UsersComponent,
     UserDetailsComponent,
+    RegisterComponent,
     AdminLoginComponent,
     AdminHeaderComponent,
     AdminPanelComponent,
@@ -73,6 +78,7 @@ import { EditBookComponent } from './components/admin/books-panel/edit-book/edit
     NgxPaginationModule,
     ReactiveFormsModule,
     NgbModule,
+    RatingModule
 
     // RouterModule.forRoot(routes)
   ],
@@ -80,6 +86,7 @@ import { EditBookComponent } from './components/admin/books-panel/edit-book/edit
     AuthService,
     AuthorService,
     UsersService,
+    HomeService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

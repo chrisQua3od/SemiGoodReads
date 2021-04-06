@@ -5,14 +5,18 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AuthService {
-  private registerUrl = 'http://localhost:8000/register ';
+  private registerUrl = "http://localhost:8000/register ";
+  private loginUrl = "http://localhost:8000/login ";
+  constructor(private http:HttpClient) { }
 
-  constructor(private http: HttpClient) {}
 
   registerUser(user: any) {
     return this.http.post<any>(this.registerUrl, user);
   }
 
+  loginUser(user:any) {
+    return this.http.post<any>(this.loginUrl, user)
+  }
   getCategories() {
     return this.http.get<any>(this.registerUrl);
   }
@@ -20,4 +24,9 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('token');
   }
+
+  getId(){
+    return localStorage.getItem('id')
+  }
+
 }
