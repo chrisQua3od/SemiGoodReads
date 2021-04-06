@@ -1,0 +1,11 @@
+i {
+  margin-right: 40px;
+  cursor: pointer;
+}
+button {
+  float: right;
+  margin: 20px;
+}
+.fa-plus {
+  margin: 0px;
+}

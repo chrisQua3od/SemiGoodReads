@@ -30,6 +30,17 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 //   {path:'author',component:AuthorsComponent},
 // ]
 
+import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { CategoryPanelComponent } from './components/admin/category-panel/category-panel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddItemComponent } from './components/admin/category-panel/add-category/add-categroy.component';
+import { EditItemComponent } from './components/admin/category-panel/edit-category/edit-category.component';
+import { BooksPanelComponent } from './components/admin/books-panel/books-panel.component';
+import { AddBookComponent } from './components/admin/books-panel/add-book/add-book.component';
+import { EditBookComponent } from './components/admin/books-panel/edit-book/edit-book.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +56,15 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
     UsersComponent,
     UserDetailsComponent,
     AdminLoginComponent,
+    AdminHeaderComponent,
+    AdminPanelComponent,
+    AdminComponent,
+    CategoryPanelComponent,
+    AddItemComponent,
+    EditItemComponent,
+    BooksPanelComponent,
+    AddBookComponent,
+    EditBookComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +72,8 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
     HttpClientModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    NgbModule,
+
     // RouterModule.forRoot(routes)
   ],
   providers: [

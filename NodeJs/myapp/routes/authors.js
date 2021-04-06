@@ -44,10 +44,14 @@ authorRouter.post("/", async (req, res) => {
         }
 
     }).delete("/:id", async (req, res) => {
-        const result = await authorModel.findByIdAndRemove({ _id: req.params.id }, { ID: req.body.ID, photo: req.body.photo, fname: req.body.fname, lname: req.body.lname, dateOfBirth: req.body.dateOfBirth })
         try {
-            res.json(result);
-
+            const author = await authorModel.findById(req.params.id);
+            if (author.books.length < 1) {
+                const result = await authorModel.findByIdAndRemove({ _id: req.params.id }, { ID: req.body.ID, photo: req.body.photo, fname: req.body.fname, lname: req.body.lname, dateOfBirth: req.body.dateOfBirth })
+                res.status(200).send("author deleted succefully");
+            } else {
+                res.send("can't delelte author contains books")
+            }
         }
         catch (err) {
             console.log(err);
