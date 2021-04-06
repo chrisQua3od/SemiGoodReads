@@ -8,6 +8,7 @@ const author = require("./routes/authors");
 const books = require("./routes/books");
 const users = require("./routes/users");
 const register = require('./routes/register')
+const config = require('./config')
 const cors = require('cors')
 
 const bodyParser = require("body-parser");
@@ -28,7 +29,7 @@ const authent = ((req, res, next) => {
     const bearer = bearerHeader.split(' ');
     const bearerToken = bearer[1];
 
-    jwt.verify(bearerToken, 'secretkeyaya123', (err, authData) => {
+    jwt.verify(bearerToken, config.secret, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       }

@@ -26,8 +26,11 @@ import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.
 import { AdminComponent } from './components/admin/admin.component';
 import { CategoryPanelComponent } from './components/admin/category-panel/category-panel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AddItemComponent } from './components/add-item/add-item.component';
-import { EditItemComponent } from './components/edit-item/edit-item.component';
+import { AddItemComponent } from './components/admin/category-panel/add-category/add-categroy.component';
+import { EditItemComponent } from './components/admin/category-panel/edit-category/edit-category.component';
+import { BooksPanelComponent } from './components/admin/books-panel/books-panel.component';
+import { AddBookComponent } from './components/admin/books-panel/add-book/add-book.component';
+import { EditBookComponent } from './components/admin/books-panel/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { EditItemComponent } from './components/edit-item/edit-item.component';
     CategoryPanelComponent,
     AddItemComponent,
     EditItemComponent,
+    BooksPanelComponent,
+    AddBookComponent,
+    EditBookComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,10 +14,12 @@
             <th scope="row" class="p-3">{{index+1}}</th>
             <td class="p-3">{{category?.name}}</td>
             <td class="p-3">
-                <i class="fas fa-pen " data-toggle="modal" data-target="#editModal" (click)="editCategory=category"></i>
+                <i class="fas fa-pen " data-toggle="modal" data-target="#editModal"
+                    (click)="updateCategory(category) "></i>
                 <i class="fas fa-trash" (click)="deleteCategory(category)"></i>
             </td>
         </tr>
     </tbody>
 </table>
-<app-edit-item [category]='editCategory'></app-edit-item>
+<app-edit-category [category]='editCategory'></app-edit-category>
+<app-add-category></app-add-category>

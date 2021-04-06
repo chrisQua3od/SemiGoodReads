@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryService } from 'src/app/services/categories.service';
 
 @Component({
-  selector: 'app-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css'],
+  selector: 'app-add-category',
+  templateUrl: './add-category.component.html',
+  styleUrls: ['./add-category.component.css'],
 })
 export class AddItemComponent implements OnInit {
   addForm: FormGroup = new FormGroup({
@@ -20,4 +20,5 @@ export class AddItemComponent implements OnInit {
       .addCategory({ name: this.addForm.value.name })
       .subscribe((data) => console.log(data));
   }
+  @Input() headers: any;
 }

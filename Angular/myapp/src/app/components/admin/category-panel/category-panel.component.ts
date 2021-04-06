@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  asNativeElements,
+  Component,
+  ElementRef,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from 'src/app/services/categories.service';
 import { Category } from '../../models/category';
@@ -16,7 +23,6 @@ export class CategoryPanelComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((data) => {
       this.categories = data.body;
-      console.log(this.categories);
     });
   }
   deleteCategory(category: any) {
@@ -24,5 +30,8 @@ export class CategoryPanelComponent implements OnInit {
     this.categoryService.deleteCategory(category._id).subscribe((data) => {
       console.log(data);
     });
+  }
+  updateCategory(category: any) {
+    this.editCategory = category;
   }
 }
