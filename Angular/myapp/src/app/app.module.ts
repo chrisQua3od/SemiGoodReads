@@ -21,6 +21,15 @@ import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UsersService } from './services/users.service';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+
+// const routes:Routes = [
+//   {path:'',component:HomeComponent},
+//   {path:'books',component:BooksComponent},
+//   {path:'categories',component:CategoriesComponent},
+//   {path:'author',component:AuthorsComponent},
+// ]
+
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -46,6 +55,7 @@ import { EditBookComponent } from './components/admin/books-panel/edit-book/edit
     UserComponent,
     UsersComponent,
     UserDetailsComponent,
+    AdminLoginComponent,
     AdminHeaderComponent,
     AdminPanelComponent,
     AdminComponent,

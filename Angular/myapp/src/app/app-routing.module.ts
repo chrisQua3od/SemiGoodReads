@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
+
+import { AdminLoginComponent } from './components/admin-login/admin-login.component'
 import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
@@ -20,6 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'authors', pathMatch: 'full' },
   { path: 'authors', component: AuthorsComponent },
+  {path: 'admin' , component : AdminLoginComponent},
   { path: '**', component: NotFoundComponent },
 ];
 
