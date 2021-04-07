@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BooksComponent } from './components/books/books.component';
+import { BookComponent } from './components/book/book.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,12 +22,15 @@ import { AuthorService } from './services/authors.service';
 import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { AuthorDetailsComponent } from './components/author-details/author-details.component';
 import { UsersService } from './services/users.service';
 import { RegisterComponent } from './components/register/register.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeService } from './services/home.service';
 import { RatingModule } from 'ng-starrating';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { CommonModule } from '@angular/common';  
+import { CategoryDetailsComponent } from './components/category-details/category-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
@@ -46,8 +51,11 @@ import { EditAuthorComponent } from './components/admin/author-panel/edit-author
     HeaderComponent,
     HomeComponent,
     BooksComponent,
+    BookComponent,
+    BookDetailsComponent,
     AuthorsComponent,
     CategoriesComponent,
+    CategoryDetailsComponent,
     LoginComponent,
     AuthorComponent,
     CategoryComponent,
@@ -68,8 +76,10 @@ import { EditAuthorComponent } from './components/admin/author-panel/edit-author
     AuthorPanelComponent,
     AddAuthorComponent,
     EditAuthorComponent,
+    AuthorDetailsComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

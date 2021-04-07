@@ -17,7 +17,7 @@ export class AddItemComponent implements OnInit {
   addCategory() {
     console.log(this.addForm.value.name);
     this.categoryService
-      .addCategory({ name: this.addForm.value.name })
+      .addCategory(this.addForm.value)
       .subscribe((data) => console.log(data));
   }
   @Input() headers: any;

@@ -27,9 +27,7 @@ export class EditItemComponent implements OnInit, OnChanges {
   editCategory() {
     if (this.editForm.value.name) {
       this.categoryService
-        .editCategory(this.category._id, {
-          name: this.editForm.value.name,
-        })
+        .editCategory(this.category._id,this.editForm.value)
         .subscribe((data) => console.log(data));
     }
   }
