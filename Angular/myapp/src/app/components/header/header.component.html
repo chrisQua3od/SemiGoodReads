@@ -13,12 +13,25 @@
         </ul>
       <form class="d-flex form-inline my-2 my-lg-0 searchbox" [formGroup]="searchForm" (ngSubmit)="onSubmit()" > 
         <input  formControlName='searchVal' class="form-control mr-sm-2" type="text" placeholder="Search"> 
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit" >Search</button> 
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="open(mymodal)" >Search</button> 
       </form>
   </div>
 </nav>
 
-<app-books [books]="filteredList" >
 
-</app-books>
+<ng-template #mymodal let-modal >
+  <div class="modal-content">
+  <div class="modal-header" >
+    <h4 class="modal-title" id="modal-basic-title">Search Results</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+    <app-books [books]="filteredList" >
 
+    </app-books>
+  </div>
+</div>
+</ng-template>

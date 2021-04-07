@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 import { BooksService } from 'src/app/services/books.service';
 import { Book } from '../models/book';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-header',
@@ -20,7 +22,7 @@ export class HeaderComponent implements OnInit {
   books:Array<Book> = []
   filteredList :Array <Book> = this.books;
 
-  constructor(private myService:BooksService) { }
+  constructor(private myService:BooksService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -45,6 +47,24 @@ export class HeaderComponent implements OnInit {
       console.log(err)
     })
   }
+  closeResult = '';
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
 
 
 }
