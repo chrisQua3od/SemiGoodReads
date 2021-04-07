@@ -48,7 +48,7 @@ const routes: Routes = [
       { path: 'authors', component: AuthorsComponent },
       { path: 'authors/:id', component: AuthorDetailsComponent },
       { path: 'authors/:id/:id', component: BookDetailsComponent },
-    
+      { path: ':id', component: BookDetailsComponent },
     ],
   },
 
