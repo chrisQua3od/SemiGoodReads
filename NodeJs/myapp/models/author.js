@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Authorschema = new mongoose.Schema({
-    ID: { type: Number, required: true },
+    ID: { type: Number },
     photo: { type: String },
     fname: { type: String, required: true },
     lname: { type: String, required: true },

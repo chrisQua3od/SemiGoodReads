@@ -9,11 +9,13 @@ export class PaginationService {
   constructor(private http:HttpClient) { }
 
   getData():Observable<any>{
-    const url = "http://localhost:8000/authors"
+    const url = "https://randomuser.me/api/?results=40"
     return this.http.get<any>(url)
   }
 
   getCurrentlyReading():Observable<any>{
+    console.log("current");
+    
     const url = "https://randomuser.me/api/?results=40"
     return this.http.get<any>(url)
   }

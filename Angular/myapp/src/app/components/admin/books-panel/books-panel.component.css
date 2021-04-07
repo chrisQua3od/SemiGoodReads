@@ -1,0 +1,20 @@
+button {
+  float: right;
+  margin: 20px;
+}
+.fa-plus {
+  padding: 0px;
+  margin: 0px;
+}
+i {
+  margin-right: 30px;
+  cursor: pointer;
+}
+td,
+th {
+  width: 200px;
+}
+img {
+  width: 130px;
+  height: 180px;
+}

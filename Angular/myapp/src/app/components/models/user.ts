@@ -6,15 +6,37 @@ export interface User {
 }
 
 export interface Category{
+    _id:string
     name:string
+    books:[
+        {
+            _id:string
+            name:string
+            cover:string
+        }
+    ]
 }
 
-export interface Author{
+export interface Book{
     _id:string
-    fname:string
-    lname:string
-    dateOfBirth: string
-    photo:string
+    name:string
+    cover:string
+    categoryId:string
+}
+
+export interface Author {
+    _id:string
+    photo: String ,
+    fname: String,
+    dateOfBirth: string,
+    lname: String,
+    books :[
+        {
+            _id:string
+            name:string
+            cover:string
+        }
+    ]
 }
 
 export interface UserBooks{

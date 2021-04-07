@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Category} from '../models/category';
+import { Category } from '../models/user';
 
 @Component({
   selector: 'app-category',
@@ -13,8 +13,15 @@ export class CategoryComponent implements OnInit {
   constructor() {}
 
   @Input('categoryInfo') category:Category = {
-   name:''
-
+    _id:'',
+   name:'',
+   books : [
+     {
+       _id:'',
+      name:'',
+      cover:''
+     }
+   ]
   }
 
 

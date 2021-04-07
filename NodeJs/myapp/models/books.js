@@ -5,7 +5,7 @@ const AuthorModel = require('./author')
 const booksSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "author" },
   cover: { type: String, required: true },
-  name: { type: String, required: true },
+  name: { type: String, required: true ,unique:true},
   avgRate: { type: Number, },
   categoryId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "categories" },
   sumAvg: { type: Number },
@@ -29,6 +29,8 @@ booksSchema.post('save', function (doc) {
   })
 
 });
+
+
 
 booksSchema.statics.FindAll = function () {
   return this.find({})
