@@ -11,24 +11,37 @@ import { UserComponent } from './components/user/user.component';
 import { UsersComponent } from './components/users/users.component';
 import { RegisterComponent } from './components/register/register.component';
 
-import { AdminLoginComponent } from './components/admin-login/admin-login.component'
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
+  // { path: '', component: HomeComponent },
+  {
+    path: '',
+    component: UserComponent,
+    children: [
+      { path: '', component: LoginComponent },
+      { path: 'user', component: UsersComponent },
+      { path: 'books', component: BooksComponent },
+      { path: 'categories', component: CategoriesComponent },
+      { path: 'home', component: HomeComponent },
+      { path: '', redirectTo: 'authors', pathMatch: 'full' },
+      { path: 'authors', component: AuthorsComponent },
+      { path: 'register', component: RegisterComponent },
+    ],
+  },
 
-  { path: '', component: LoginComponent },
-  { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'user', component: UsersComponent },
-  { path: 'books', component: BooksComponent },
-  { path: 'categories', component: CategoriesComponent },
-  { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: 'authors', pathMatch: 'full' },
-  { path: 'authors', component: AuthorsComponent },
-  { path: 'register',component:RegisterComponent},
-  {path: 'admin' , component : AdminLoginComponent},
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      { path: '', component: AdminLoginComponent },
+      { path: 'panel', component: AdminPanelComponent },
+    ],
+  },
   { path: '**', component: NotFoundComponent },
-  
 ];
 
 @NgModule({

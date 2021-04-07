@@ -9,3 +9,7 @@ button {
 .fa-plus {
   margin: 0px;
 }
+td,
+th {
+  width: 200px;
+}
