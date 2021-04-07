@@ -3,17 +3,13 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const loginRouter = require('./routes/login')
 var jwt = require('jsonwebtoken');
-const test = require("./routes/test");
-// =======
-// const PORT = process.env.PORT || 7000;
-// const test = require("./routes/test");
-// >>>>>>> a6cdc413b466c1d95e31a3ffc295d7ad640f31a7
 const categories = require("./routes/categories");
 const author = require("./routes/authors");
 const books = require("./routes/books");
 const users = require("./routes/users");
 const register = require('./routes/register')
 const admin = require('./routes/admin')
+const config = require('./config')
 const cors = require('cors')
 
 const bodyParser = require("body-parser");
@@ -34,7 +30,7 @@ const authent = ((req, res, next) => {
     const bearer = bearerHeader.split(' ');
     const bearerToken = bearer[1];
 
-    jwt.verify(bearerToken, 'secretkeyaya123', (err, authData) => {
+    jwt.verify(bearerToken, config.secret, (err, authData) => {
       if (err) {
         res.sendStatus(403);
       }
@@ -53,8 +49,6 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/login", loginRouter)
-
-//app.use("/test", test);
 app.use("/categories", categories);
 app.use("/authors", author);
 app.use("/books", books);

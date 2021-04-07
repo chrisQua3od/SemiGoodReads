@@ -1,6 +1,5 @@
 export interface Author {
-    photo: String ,
-    fname: String,
-    lname: String
+  photo: String;
+  fname: String;
+  lname: String;
 }
-
