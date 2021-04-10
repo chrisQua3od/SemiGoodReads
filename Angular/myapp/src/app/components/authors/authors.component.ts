@@ -1,5 +1,4 @@
-import { Component, OnInit,Input,OnDestroy } from '@angular/core';
-import { PaginationService } from 'src/app/services/pagination.service';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { AuthorService } from 'src/app/services/authors.service';
 import { Author } from '../models/author';
 
@@ -10,35 +9,32 @@ import { Author } from '../models/author';
   styleUrls: ['./authors.component.css']
 })
 
-export class AuthorsComponent implements OnInit,OnDestroy {
-  // data:Array<any>=[]
-  // totalRecords:string = ''
-  // page:number=1
-  authors:Array<Author> = []
-  totalRecords:string = ''
-  page:number=1
-  constructor(private myService:AuthorService) { }
+export class AuthorsComponent implements OnInit, OnDestroy {
+  authors: Array<Author> = []
+  totalRecords: string = ''
+  page: number = 1
+  itemsPerPage: number = 5;
+  constructor(private myService: AuthorService) { }
 
 
-  subscriber:any;
+  subscriber: any;
 
   ngOnDestroy(): void {
     this.subscriber.unsubscribe()
   }
 
   ngOnInit(): void {
-    this.subscriber = this.myService.getAuthors()
-      .subscribe((response:any)=>{
-        console.log(response)
-        this.authors= response.body
-        this.totalRecords=response.results.length;
-        console.log(this.authors)
-      },
-      (err)=>{
-        console.log(err)
-      }  
-    )
+    this.goToPage();
   }
- // @Input() allBookslist:Array<{img:string,authName:string,avgRate:number,myRate:number}> = []
-
+  goToPage() {
+    this.subscriber = this.myService.getAuthors(this.page.toString(), this.itemsPerPage)
+      .subscribe((response: any) => {
+        this.authors = response.body.authors
+        this.totalRecords = response.body.numberOfProducts;
+      },
+        (err) => {
+          console.log(err)
+        }
+      )
+  }
 }

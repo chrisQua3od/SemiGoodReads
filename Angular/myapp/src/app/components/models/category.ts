@@ -1,6 +1,6 @@
 export interface Category {
-    _id:string
-    name: String 
-    
+    _id: string
+    name: String
+    books: []
 }
 

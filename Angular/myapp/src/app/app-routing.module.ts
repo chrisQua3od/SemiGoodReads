@@ -21,20 +21,20 @@ import { AuthorDetailsComponent } from './components/author-details/author-detai
 import { CategoryDetailsComponent } from './components/category-details/category-details.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 
-
 const routes: Routes = [
-  // { path: '', component: HomeComponent },
+
   {
-    path: '',
-    component: UserComponent,
+    path: 'admin', component: AdminComponent,
     children: [
-      { path: '', component: LoginComponent },
-     // { path: 'user', component: UsersComponent },
-     // { path: 'books', component: BooksComponent },
-     // { path: 'categories', component: CategoriesComponent },
-     { path: 'home', component: HomeComponent },
-      //{ path: '', redirectTo: 'authors', pathMatch: 'full' },
-     // { path: 'authors', component: AuthorsComponent },
+      { path: '', component: AdminLoginComponent },
+      { path: 'panel', component: AdminPanelComponent },
+    ],
+  },
+  {
+    path: '', component: UserComponent,
+    children: [
+      { path: '', pathMatch: 'full', component: LoginComponent },
+      { path: 'home', component: HomeComponent },
       { path: 'register', component: RegisterComponent },
       { path: '', component: HomeComponent },
       { path: 'user', component: UsersComponent },
@@ -44,27 +44,17 @@ const routes: Routes = [
       { path: 'categories/:id', component: CategoryDetailsComponent },
       { path: 'categories/:id/:id', component: BookDetailsComponent },
       { path: 'login', component: LoginComponent },
-      { path: '', redirectTo: 'authors', pathMatch: 'full' },
       { path: 'authors', component: AuthorsComponent },
       { path: 'authors/:id', component: AuthorDetailsComponent },
       { path: 'authors/:id/:id', component: BookDetailsComponent },
       { path: ':id', component: BookDetailsComponent },
     ],
   },
-
-  {
-    path: 'admin',
-    component: AdminComponent,
-    children: [
-      { path: '', component: AdminLoginComponent },
-      { path: 'panel', component: AdminPanelComponent },
-    ],
-  },
-  { path: '**', component: NotFoundComponent }
-]
+  { path: '**', component: NotFoundComponent },
+];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

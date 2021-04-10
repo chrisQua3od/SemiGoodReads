@@ -1,4 +1,5 @@
-const express = require("express")
+const express = require("express");
+const booksModel = require("../models/books");
 const bookModel = require('../models/books')
 const bookRouter = express.Router();
 
@@ -23,14 +24,25 @@ bookRouter.post("/", async (req, res) => {
 
 })
     .get("/", async (req, res) => {
-        const book = await bookModel.find({}).populate("author").populate("categoryId").exec();
+        let totalRecords = await bookModel.find().countDocuments();
+        const { page, limit } = req.query;
+        const books = await booksModel.find({})
+            .skip((page - 1) * parseInt(limit))
+            .limit(parseInt(limit))
+            .populate("author").populate("categoryId").exec();
         try {
-            res.json(book)
+            res.send({ books, totalRecords })
         }
         catch (err) {
-            console.log(err)
+            res.send(err.message);
         }
-        console.log("Done");
+        // const book = await bookModel.find({}).populate("author").populate("categoryId").exec();
+        // try {
+        //     res.json(book)
+        // }
+        // catch (err) {
+        //     console.log(err)
+        // }
     })
     .get("/:id", async (req, res) => {
 
@@ -44,7 +56,7 @@ bookRouter.post("/", async (req, res) => {
         }
         console.log("Done");
     })
-    
+
     .delete("/:id", async (req, res) => {
         const result = await bookModel.findByIdAndRemove({ _id: req.params.id })
         try {
