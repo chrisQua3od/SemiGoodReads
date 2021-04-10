@@ -7,6 +7,7 @@ const booksSchema = new mongoose.Schema({
   cover: { type: String, required: true },
   name: { type: String, required: true ,unique:true},
   avgRate: { type: Number, },
+  sumary: { type: String , required:true},
   categoryId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "categories" },
   sumAvg: { type: Number },
   countAvg: { type: Number },

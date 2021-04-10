@@ -9,6 +9,7 @@ bookRouter.post("/", async (req, res) => {
         author: req.body.author,
         cover: req.body.cover,
         name: req.body.name,
+        sumary:req.body.sumary,
         categoryId: req.body.categoryId,
     })
     const book = await bookInstance.save()
@@ -62,6 +63,7 @@ bookRouter.post("/", async (req, res) => {
             ...(book.author ? { author: book.author } : {}),
             ...(book.cover ? { cover: book.cover } : {}),
             ...(book.name ? { name: book.name } : {}),
+            ...(book.sumary ? { sumary: book.sumary } : {}),
             ...(book.categoryId ? { categoryId: book.categoryId } : {}),
 
         }
