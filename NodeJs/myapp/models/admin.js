@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const bcrypt = require('bcrypt')
 const AdminSchema = new mongoose.Schema({
-   
+
     adminName: { type: String, required: true },
-   
+
     password: { type: String, required: true }
-  
+
 })
 
 AdminSchema.pre('save', function (next) {

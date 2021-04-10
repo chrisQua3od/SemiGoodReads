@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Author } from '../components/models/author';
 
@@ -10,10 +10,9 @@ export class AuthorService {
     console.log('service ctor');
   }
   readonly baseURL: string = 'http://localhost:8000/authors';
-  //readonly userBooks: string = "http://localhost:8000/users/606623d776e86ac9ad8902fd/books";
 
-  getAuthors() {
-    return this.client.get(this.baseURL, { observe: 'response' });
+  getAuthors(page: string, limit: number) {
+    return this.client.get(this.baseURL + `?page=${page}&limit=${limit}`, { observe: 'response' });
   }
 
   getAuthorById(id: number) {

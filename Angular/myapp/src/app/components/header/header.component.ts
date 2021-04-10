@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { BooksService } from 'src/app/services/books.service';
 import { Book } from '../models/book';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -19,10 +19,10 @@ export class HeaderComponent implements OnInit {
   searchForm = new FormGroup({
     searchVal: new FormControl(''),
   });
-  books:Array<Book> = []
-  filteredList :Array <Book> = this.books;
+  books: Array<Book> = []
+  filteredList: Array<Book> = this.books;
 
-  constructor(private myService:BooksService,private modalService: NgbModal) { }
+  constructor(private myService: BooksService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -31,25 +31,25 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  subscriber:any
+  subscriber: any
 
   onSubmit() {
     console.log("boooooooook")
 
-    this.subscriber = this.myService.getBooks()
-    .subscribe((book:any)=>{
-      console.log(book)
-      this.books = book
-        this.filteredList= this.books.filter((item)=>{
+    this.subscriber = this.myService.getBooks(1, 20)
+      .subscribe((book: any) => {
+        console.log(book)
+        this.books = book
+        this.filteredList = this.books.filter((item) => {
           return item.name.includes(this.search?.value)
-        })    
-    },(err:any)=>{
-      console.log(err)
-    })
+        })
+      }, (err: any) => {
+        console.log(err)
+      })
   }
   closeResult = '';
-  open(content:any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  open(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

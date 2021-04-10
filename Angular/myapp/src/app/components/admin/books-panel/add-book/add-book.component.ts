@@ -1,10 +1,9 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Category } from 'src/app/components/models/category';
 import { AuthorService } from 'src/app/services/authors.service';
 import { BooksService } from 'src/app/services/books.service';
 import { CategoryService } from 'src/app/services/categories.service';
+import { AdminPanelService } from '../../admin-panel.service';
 
 @Component({
   selector: 'app-add-book',
@@ -24,16 +23,18 @@ export class AddBookComponent implements OnInit {
   constructor(
     private bookService: BooksService,
     private categoryService: CategoryService,
-    private authorSerice: AuthorService
-  ) {}
+    private authorSerice: AuthorService,
+    private adminPanelService: AdminPanelService
+  ) { }
 
   ngOnInit(): void {
-    this.categoryService
-      .getCategories()
-      .subscribe((res) => (this.categories = res.body));
-    this.authorSerice
-      .getAuthors()
-      .subscribe((res) => (this.authors = res.body));
+    this.adminPanelService.getCategories().then((res: any) => {
+      this.categories = res;
+    })
+    this.adminPanelService.getAuthors().then((res: any) => {
+      console.log(res);
+      this.authors = res.authors;
+    })
   }
   addBook() {
     console.log(this.addBookForm.value);

@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class BooksService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
   readonly baseUrl: string = 'http://localhost:8000/books';
 
-  getBooks() {
-    return this.httpClient.get(this.baseUrl);
+  getBooks(page: number, limit: number) {
+    return this.httpClient.get(this.baseUrl + `?page=${page}&limit=${limit}`);
   }
   addBook(bookBody: object) {
     return this.httpClient.post(this.baseUrl, bookBody);

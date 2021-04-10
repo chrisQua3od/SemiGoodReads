@@ -23,14 +23,17 @@ authorRouter.post("/", async (req, res) => {
     }
 })
     .get("/", async (req, res) => {
-        // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-
-        const author = await authorModel.find({}).populate("books").exec();
+        let numberOfProducts = await authorModel.find().countDocuments();
+        const { page, limit } = req.query;
+        const authors = await authorModel.find({})
+            .skip((page - 1) * parseInt(limit))
+            .limit(parseInt(limit))
+            .populate("books").exec();
         try {
-            res.json(author)
+            res.send({ authors, numberOfProducts })
         }
         catch (err) {
-            console.log(err)
+            res.send(err.message);
         }
     }).get("/:id", async (req, res) => {
         const { id } = req.params
@@ -41,7 +44,6 @@ authorRouter.post("/", async (req, res) => {
         catch (err) {
             console.log(err);
         }
-
     }).delete("/:id", async (req, res) => {
         try {
             const author = await authorModel.findById(req.params.id);
