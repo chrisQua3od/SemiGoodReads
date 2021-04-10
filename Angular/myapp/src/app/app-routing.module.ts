@@ -24,6 +24,18 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
+
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      { path: '', component: AdminLoginComponent },
+      { path: 'panel', component: AdminPanelComponent },
+    ],
+  },
+
+
+
   {
     path: '',
     component: UserComponent,
@@ -51,16 +63,8 @@ const routes: Routes = [
       { path: ':id', component: BookDetailsComponent },
     ],
   },
-
-  {
-    path: 'admin',
-    component: AdminComponent,
-    children: [
-      { path: '', component: AdminLoginComponent },
-      { path: 'panel', component: AdminPanelComponent },
-    ],
-  },
   { path: '**', component: NotFoundComponent }
+  
 ]
 
 @NgModule({
