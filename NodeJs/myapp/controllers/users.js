@@ -67,7 +67,7 @@ async function getBooksByStatus(userId, status) {
 }
 async function addBookForUser(req, res) {
     try {
-        await UserModel.findByIdAndUpdate(req.params.id, { $push: { library: req.body }, $set: { rating: 0 } })
+        await UserModel.findByIdAndUpdate(req.params.id, { $push: { library: { ...req.body, rating: 0 } } })
         res.status(200).send("Book Added Succeffully");
     } catch (erro) {
         res.status(400).send("bad request")
@@ -141,6 +141,34 @@ async function editBookRating(req, res) {
         res.status(500).send("bad request")
     }
 }
+async function editBookStatus(req, res) {
+    try {
+        await UserModel.findByIdAndUpdate(req.params.id,
+            { '$set': { 'library.$[el].status': req.body.status } },
+            {
+                arrayFilters: [{ "el.bookId": req.body.bookId }],
+                new: true
+            })
+
+        res.status(200).send("Status Added Succeffully");
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send("bad request")
+    }
+}
+async function deleteBook(req, res) {
+    try {
+        // UserModel.findById(req.params.id);
+        console.log(req.body.bookId);
+        await UserModel.findByIdAndUpdate(req.params.id,
+            { '$pull': { library: { bookId: req.body.bookId } } },
+            { multi: true }
+        )
+        res.status(200).send("book deleted succeffuly");
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+}
 async function updateUser(req, res) {
     const { id } = req.params;
     const user = req.body
@@ -169,5 +197,7 @@ module.exports = {
     addBookReview,
     addBookRating,
     editBookRating,
-    updateUser
+    updateUser,
+    editBookStatus,
+    deleteBook
 }

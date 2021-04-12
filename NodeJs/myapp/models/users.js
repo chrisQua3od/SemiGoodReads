@@ -7,22 +7,14 @@ const UserSchema = new mongoose.Schema({
     lname: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    library: [{
-        bookId: { type: mongoose.Schema.Types.ObjectId, ref: "books" }, status: { type: String },
-        rating: { type: Number }, review: { type: String }
-    }]
+    library: [
+        {
+            bookId: { type: mongoose.Schema.Types.ObjectId, ref: "books", unique: true },
+            status: { type: String, enum: ["read", "want to read", "currently reading"], required: true },
+            rating: { type: Number }, review: { type: String }
+        }
+    ]
 })
-
-
-// UserSchema.pre('save', function (next) {
-//     const doc = this
-//     if (doc.isNew) {
-//         bcrypt.hash(doc.password, 10, (err, hashedText) => {
-//             doc.password = hashedText;
-//             next()
-//         })
-//     }
-// })
 
 const UserModel = mongoose.model("users", UserSchema)
 module.exports = UserModel;
