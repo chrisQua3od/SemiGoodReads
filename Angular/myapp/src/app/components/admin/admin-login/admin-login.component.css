@@ -7,24 +7,40 @@
     background-color: green;
 }
 
-
-
-
-
 .login{
-    padding: 10px;
+    padding: 15px;
     float: right;
-    background-color: #000000c2;
-    color: white;
+    /* background-color: #000000c2; */
+    color:white;
     box-sizing: border-box;
     width: 450px;
     height: auto;
-    margin-right: 293px;
-    margin-top: 110px;
+    margin-right: 450px;
+    margin-top: 150px;
     border-radius: 20px;
+    
 }
+div .login {
+    width: 200px;
+    height: 200px;
+    display: block;
+    position: relative;
+  }
+  
+  .login::after {
+    content: "";
+    background: url(https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1-1280x720.jpg);
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
 
 h3{
+    text-shadow: 2px 2px 5px white;
     text-align: center;
 }
 
@@ -36,11 +52,16 @@ h3{
     outline: none;
     box-sizing: border-box;
     border: none;
-    border-bottom: 1px dotted #777977;
+   
     font-size: 18px;
     font-weight: bold;
-    color: #777977;
+    color:black;
+    text-shadow: 2px 2px 5px white;
     border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+   
 }
 
 form button[type=submit]{
@@ -49,19 +70,20 @@ form button[type=submit]{
     margin-top: 10px;
     box-sizing: border-box;
     font-size: 18px;
-    margin-left: 24%;
+    margin-left: 28%;
     outline: none;
     border: none;
     background:none;
     color:white;
-    border: 2px solid #777977;
+    border: 2px solid black;
     border-radius: 10px;
     cursor: pointer;
     transition-duration: 0.4s;
+
 }
 
 form button[type=submit]:hover{
-    background-color: firebrick;
+    background-color:darksalmon;
 }
 
 i{
@@ -69,5 +91,6 @@ i{
 }
 input{
 
+    color: white;
     width: 150px;
 }
