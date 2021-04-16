@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -21,8 +22,8 @@ export class HeaderComponent implements OnInit {
   });
   books:Array<Book> = []
   filteredList :Array <Book> = this.books;
-
-  constructor(private myService:BooksService,private modalService: NgbModal) { }
+  logoutIcon:boolean = true
+  constructor(private myService:BooksService,private modalService: NgbModal,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -65,6 +66,17 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  logOut(){
+    var conf = confirm('sure you want to leave')
+    if(conf){
+      localStorage.removeItem('id')
+      localStorage.removeItem('token')
+      this.router.navigateByUrl('/login')
+    }else{
+        //do nothing
+    }
+
+  }
 
 
 }
