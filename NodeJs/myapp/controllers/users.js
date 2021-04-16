@@ -1,5 +1,6 @@
 const UserModel = require('../models/users')
 const BookModel = require('../models/books')
+const booksModel = require('../models/books')
 
 //Save new User
 async function saveNewUser(req, res) {
@@ -101,8 +102,9 @@ async function addBookReview(req, res) {
                 arrayFilters: [{ "el.bookId": req.body.bookId }],
                 new: true
             })
-        await BookModel.findByIdAndUpdate(req.body.bookId, { $push: { reviews: req.params.id } });
-        res.status(200).send("Review Added Succeffully");
+        console.log(req.body.review);
+        await BookModel.findByIdAndUpdate(req.body.bookId, { $push: { reviews: { body: req.body.review } } });
+        res.json({ status: 200, message: "success" });
     } catch (error) {
         console.log(error.message)
         res.status(500).send("bad request")
@@ -125,7 +127,8 @@ async function addBookRating(req, res) {
 }
 async function editBookRating(req, res) {
     const user = await UserModel.findById(req.params.id, { library: { $elemMatch: { bookId: req.body.bookId } } }).select('-_id');
-    const oldRating = user.library[0].rating;
+    const oldRating = user.library[0]?.rating ? user.library[0]?.rating : 0;
+    const newCount = oldRating ? 0 : 1;
     try {
         await UserModel.findByIdAndUpdate(req.params.id,
             { '$set': { 'library.$[el].rating': req.body.rating } },
@@ -134,10 +137,11 @@ async function editBookRating(req, res) {
                 new: true
             })
         const editRating = req.body.rating - oldRating;
-        await BookModel.findByIdAndUpdate(req.body.bookId, { $inc: { sumAvg: editRating } });
+        await BookModel.findByIdAndUpdate(req.body.bookId, {
+            '$inc': { sumAvg: editRating, countAvg: newCount }
+        });
         res.status(200).send("Rating Added Succeffully");
     } catch (error) {
-        console.log(error.message)
         res.status(500).send("bad request")
     }
 }

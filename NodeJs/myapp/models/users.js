@@ -11,7 +11,8 @@ const UserSchema = new mongoose.Schema({
         {
             bookId: { type: mongoose.Schema.Types.ObjectId, ref: "books", unique: true },
             status: { type: String, enum: ["read", "want to read", "currently reading"], required: true },
-            rating: { type: Number }, review: { type: String }
+            rating: { type: Number },
+            review: { type: String }
         }
     ]
 })
