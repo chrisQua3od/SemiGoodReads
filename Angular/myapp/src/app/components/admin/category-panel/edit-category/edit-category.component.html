@@ -16,8 +16,8 @@
                             placeholder="Enter Category Name" formControlName='name'>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" #close>Close</button>
-                        <button type="sumbit" class="btn btn-primary" (click)="close.click()"
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" #close>Close</button>
+                        <button type="sumbit" class="btn btn-danger" (click)="close.click()"
                             [disabled]='editForm.invalid||editFormControl.name.untouched'>Save
                             changes</button>
                     </div>
