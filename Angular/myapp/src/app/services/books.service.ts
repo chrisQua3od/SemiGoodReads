@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class BooksService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
   readonly baseUrl: string = 'http://localhost:8000/books';
 
   getBooks() {
@@ -19,7 +19,7 @@ export class BooksService {
     return this.httpClient.delete(`${this.baseUrl}/${id}`);
   }
   updateBook(id: string, bookBody: any) {
-    console.log(bookBody.value);
     return this.httpClient.patch(`${this.baseUrl}/${id}`, bookBody);
   }
+
 }

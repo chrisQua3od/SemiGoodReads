@@ -7,18 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class HomeService {
   baseUrl = 'http://localhost:8000/users/';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllBooks(userId: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${userId}/books`);
   }
 
   getCurrentlyReading(userId: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${userId}/currentlyReading`);
+    return this.http.get<any>(`${this.baseUrl}/${userId}/currently-reading`);
   }
 
   getWantToRead(userId: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${userId}/wantToRead`);
+    return this.http.get<any>(`${this.baseUrl}/${userId}/want-to-read`);
   }
 
   getRead(userId: string): Observable<any> {

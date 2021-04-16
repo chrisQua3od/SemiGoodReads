@@ -1,3 +1,4 @@
+
  <!-- <div class="col-2 d-flex flex-column p-3 text-white bg-primary sidenav"> -->
  <div class="sidebar">
         <ul class="nav nav-pills flex-column mb-auto">
@@ -23,11 +24,35 @@
         <div class="container">
             <h4 class="text-center shelf">{{currentSection}}</h4>
             <div class="row bookView" *ngFor="let book of data| paginate:{
+
+<div class="container">
+  <div class="row">
+    <div class="col-2 d-flex flex-column p-3 text-white bg-primary sidenav">
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" (click)="ngOnInit()">All</a>
+        </li>
+        <li>
+          <a class="nav-link text-white" (click)="getCurrentBooks()">Currently Reading</a>
+        </li>
+        <li>
+          <a class="nav-link text-white" (click)="getWantToReadBooks()">Want To Read</a>
+        </li>
+        <li>
+          <a class="nav-link text-white" (click)="getReadBooks()">Read</a>
+        </li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="container col-9">
+      <h4 class="text-center shelf">{{currentSection}}</h4>
+      <div class="row bookView" *ngFor="let book of data| paginate:{
                 id:'listBooks',
                 itemsPerPage:5,
                 currentPage:page,
                 totalItems:totalRecords
             }">
+
                 <div class="col-md-3">
                     <img class="" src="{{book.bookId?.cover}}" alt="" id="photo">
                 </div>
@@ -55,6 +80,15 @@
         
         <div class="pagination  justify-content-center">
             <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>
+
         </div>
+
+        <p class="col-7 summary">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates soluta ab
+          nam laboriosam numquam doloribus fuga porro. Dolorum nemo enim optio iure? Delectus atque numquam
+          deleniti nemo quod expedita beatae.
+      </div>
     </div>
-   
+    <div class="pagination justify-content-center">
+      <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>
+    </div>
+
