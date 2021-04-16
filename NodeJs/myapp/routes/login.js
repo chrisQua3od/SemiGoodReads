@@ -25,9 +25,9 @@ loginRoute.post("/", async (req, res) => {
       else {
         const token = await jwt.sign({ user: useree }, config.secret , { expiresIn: '1m' })
         console.log("ok");
-        // const refreshToken = await jwt.sign({ user: useree }, config.secret , { expiresIn: '1d' })
-        // res.status(200).send({ auth: true, userId: useree._id, token,refreshToken });
-        res.status(200).send({ auth: true, userId: useree._id, token });
+        const refreshToken = await jwt.sign({ user: useree }, config.secret , { expiresIn: '1d' })
+        res.status(200).send({ auth: true, userId: useree._id, token,refreshToken });
+        // res.status(200).send({ auth: true, userId: useree._id, token });
       }
     }
   }
