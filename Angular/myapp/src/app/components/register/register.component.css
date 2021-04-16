@@ -2,3 +2,24 @@
     padding: 5px;
     width: 60%;
 }
+
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 30px;
+    margin-left: 10px;
+}
+.submit{
+    margin: auto;
+}
+
+.btn1{
+    border: none;
+    outline: none;
+    height:50px;
+    width: 100%;
+    background-color: black ;
+    color: white;
+    border-radius: 4px;
+    font-size: x-large;
+}
