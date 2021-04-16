@@ -21,7 +21,7 @@ img{
     
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-
+}
 .cont {
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translate(-50%, -50%);
