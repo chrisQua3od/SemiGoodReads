@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth:AuthService,private router:Router , private fb:FormBuilder) { }
 
   ngOnInit(): void {
+
   }
 
   get email() { return this.loginForm.get('email'); }
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.loginUserData.email = this.email?.value
     this.loginUserData.password = this.password?.value
     console.log(this.loginUserData);
+    this.showIcon(true)
     this.loginUser()
   }
   
@@ -38,13 +40,20 @@ export class LoginComponent implements OnInit {
       res => {
         localStorage.setItem('token', res.token)
         localStorage.setItem('id',res.userId)
-        
         this.router.navigate(['/home'])
+
         console.log(res);
         
       },
       err => console.log(err)
-    ) 
+    )
+  }
+
+  @Output() logoutIcon = new EventEmitter<boolean>();
+
+  showIcon(value: boolean) {
+    this.logoutIcon.emit(value);
+    console.log('trueeeeeee');
     
   }
 }
