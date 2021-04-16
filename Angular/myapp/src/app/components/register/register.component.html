@@ -36,6 +36,7 @@
       <h4 class="modal-title form-title" id="modal-basic-title">Register</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true"><i class="far fa-window-close"></i></span>
+
       </button>
     </div>
     <div class="modal-body">
@@ -64,13 +65,21 @@
           <div class="position-relative input">
             <input  formControlName='confirmPassword' class="reg-fields mb-1 input-field" type="password" placeholder="Retype Password ...">
             <i class="fas fa-fingerprint"></i>
+
             <span *ngIf="f.confirmPassword?.errors?.mustMatch">Passwords must match</span>
           </div>
         </div>
         
         
         <button class='reg-btn' type="submit" (click)="modal.dismiss('Cross click')" [disabled]="registerationForm?.invalid">Submit</button>
+
         
     </form>
     </div>
   </ng-template>
+
+  <style>
+    input{
+     
+    }
+  </style>

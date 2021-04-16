@@ -1,3 +1,4 @@
+
 :host(body) {
   /* margin: 0;
     padding: 0;
@@ -17,7 +18,7 @@
 .login {
   padding: 15px;
   /* background-color: #000000c2; */
-  color: white;
+  color: black;
   box-sizing: border-box;
   width: 450px;
   height: auto;
@@ -32,13 +33,13 @@ div .login {
 
 .login::after {
   content: "";
-  background: url(https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1-1280x720.jpg);
+  background: url(https://c1.wallpaperflare.com/preview/791/207/698/dark-gloomy-books-pages.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100%;
   width: 100%;
-  opacity: 0.5;
+  opacity: 0.8;
   top: 0;
   left: 0;
   bottom: 0;
@@ -63,8 +64,8 @@ h3 {
 
   font-size: 18px;
   font-weight: bold;
-  color: black;
-  text-shadow: 2px 2px 5px white;
+  color: white;
+  text-shadow: 2px 2px 5px black;
   border-radius: 5px;
   border-width: 2px;
   border-style: solid;
@@ -82,7 +83,7 @@ form button[type="submit"] {
   outline: none;
   border: none;
   background: none;
-  color: darkcyan;
+  color: black;
   border: 2px solid black;
   border-radius: 10px;
   cursor: pointer;
@@ -91,7 +92,7 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-  background-color: darksalmon;
+  background-color: brown;
 }
 
 i {
@@ -101,3 +102,4 @@ input {
   color: white;
   width: 150px;
 }
+
