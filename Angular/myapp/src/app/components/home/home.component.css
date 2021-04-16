@@ -1,8 +1,4 @@
-.sidenav{
-    width: 200px;
-    height: 400px;
-    margin-left: 0;
-}
+
 
 #photo{
     width: 150px;
@@ -25,3 +21,53 @@
 a{
     cursor: pointer;
 }
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+  }
+  ul.a {
+    list-style-type: none;
+  }
+  
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #41464b;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  
+  }
+
+
+  
+  
+  .sidebar a:hover:not(.active) {
+    /* background-color: #DC3545; */
+    background-color:rgba(53, 3, 3, 0.781)
+  }
+  
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+

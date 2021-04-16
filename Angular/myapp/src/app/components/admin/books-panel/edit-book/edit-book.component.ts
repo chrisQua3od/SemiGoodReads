@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthorService } from 'src/app/services/authors.service';
-import { BooksService } from 'src/app/services/books.service';
-import { CategoryService } from 'src/app/services/categories.service';
+import { AuthorService } from '../../../../services/authors.service';
+import { BooksService } from '../../../../services/books.service';
+import { CategoryService } from '../../../../services/categories.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -35,6 +35,7 @@ export class EditBookComponent implements OnInit, OnChanges {
       ]),
       author: new FormControl(this.updatedBook?.author, [Validators.required]),
       photo: new FormControl(this.updatedBook?.cover),
+      sumary:new FormControl(),
     });
   }
   editBook() {
