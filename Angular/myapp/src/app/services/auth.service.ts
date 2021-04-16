@@ -27,6 +27,7 @@ export class AuthService {
 
   getId(){
     return localStorage.getItem('id')
+    // ghghgsdfhgfhdghfghsfd
   }
 
 }
