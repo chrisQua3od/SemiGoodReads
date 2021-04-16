@@ -13,8 +13,13 @@
                 <form [formGroup]='addBookForm' (ngSubmit)="addBook()">
                     <div class="form-group">
                         <label class="m-1" for="exampleInputEmail1">Book Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                             formControlName='name'>
+                    </div>
+                    <div class="form-group">
+                        <label class="m-1" for="exampleInputEmail1">Book Summary</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            formControlName='sumary'>
                     </div>
                     <div class="form-group">
                         <label class="m-1" for="exampleInputEmail1">Category </label>
@@ -39,8 +44,8 @@
                             formControlName='cover'>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="sumbit" class="btn btn-primary" (click)="close.click()"
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="sumbit" class="btn btn-danger" (click)="close.click()"
                             [disabled]='addBookForm.invalid'>Save
                             changes</button>
                     </div>

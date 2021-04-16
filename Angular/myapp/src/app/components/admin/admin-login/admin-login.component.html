@@ -1,18 +1,25 @@
-<div class="login">
+
+<div class="login ">
+  <div class="cont">
+
     <h3>Welcome To Admin Panel</h3>
+
     <form action="" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <span>
-            <i class="fas fa-user-cog"></i>
-            <input formControlName='adminName' class="t" type="text" placeholder="Enter Your UserName ...">
-        </span>
-        <span>
-            <i class="fas fa-fingerprint"></i>
-            <input formControlName='password' class="t" type="password" placeholder="Enter Your Password ...">
+      <span>
+        <i></i>
+        <p></p>
+        <input formControlName='adminName' class="t" type="text" placeholder="Enter Your Name ..."
+          style="box-shadow: 10px 10px 5px black;">
+      </span>
+      <span style="display: inline;">
+        <i></i>
+        <p></p>
+        <input formControlName='password' class="t" type="password" placeholder="******"
+          style="box-shadow: 10px 10px 5px black;">
+      </span>
 
-        </span>
-
-        <button type="submit">Login</button>
-
+      <button type="submit" style="box-shadow: 10px 10px 5px black;">Login</button>
     </form>
-
+  </div>
 </div>
+
