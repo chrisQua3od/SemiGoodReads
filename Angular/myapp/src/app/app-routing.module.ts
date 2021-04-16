@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
 import { AuthorDetailsComponent } from './components/author-details/author-details.component';
 import { CategoryDetailsComponent } from './components/category-details/category-details.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
-
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   // { path: '', component: HomeComponent },
@@ -44,20 +44,20 @@ const routes: Routes = [
      // { path: 'user', component: UsersComponent },
      // { path: 'books', component: BooksComponent },
      // { path: 'categories', component: CategoriesComponent },
-     { path: 'home', component: HomeComponent },
+     { path: 'home', component: HomeComponent,canActivate:[AuthGuard] },
       //{ path: '', redirectTo: 'authors', pathMatch: 'full' },
      // { path: 'authors', component: AuthorsComponent },
       { path: 'register', component: RegisterComponent },
       { path: '', component: HomeComponent },
       { path: 'user', component: UsersComponent },
-      { path: 'books', component: BooksComponent },
+      { path: 'books', component: BooksComponent,canActivate:[AuthGuard] },
       { path: 'books/:id', component: BookDetailsComponent },
-      { path: 'categories', component: CategoriesComponent },
+      { path: 'categories', component: CategoriesComponent,canActivate:[AuthGuard] },
       { path: 'categories/:id', component: CategoryDetailsComponent },
       { path: 'categories/:id/:id', component: BookDetailsComponent },
       { path: 'login', component: LoginComponent },
       { path: '', redirectTo: 'authors', pathMatch: 'full' },
-      { path: 'authors', component: AuthorsComponent },
+      { path: 'authors', component: AuthorsComponent,canActivate:[AuthGuard] },
       { path: 'authors/:id', component: AuthorDetailsComponent },
       { path: 'authors/:id/:id', component: BookDetailsComponent },
       { path: ':id', component: BookDetailsComponent },

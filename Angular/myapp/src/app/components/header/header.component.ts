@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { BooksService } from 'src/app/services/books.service';
+
 import { Book } from '../models/book';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
   constructor(private myService:BooksService,private modalService: NgbModal,private router:Router) { }
 
   ngOnInit(): void {
+    
   }
   get search() {
     return this.searchForm.get('searchVal');
@@ -75,7 +77,6 @@ export class HeaderComponent implements OnInit {
     }else{
         //do nothing
     }
-
   }
 
 

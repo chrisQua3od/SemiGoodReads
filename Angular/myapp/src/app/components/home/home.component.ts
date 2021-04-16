@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { HomeService } from 'src/app/services/home.service';
 import { PaginationService } from 'src/app/services/pagination.service';
 import { StarRatingComponent } from 'ng-starrating';
+import { RatingAndStatusService } from 'src/app/services/rating-and-status.service';
 
 @Component({
   selector: 'app-home',
@@ -16,24 +17,30 @@ export class HomeComponent implements OnInit {
   currentSection: string = '';
   bookCurrentState: string = '';
   userId: any = '';
-  rating: any;
+  
+  newRate = {
+    userId:'',
+    bookId:'',
+    rating:''
+  }
+
+  bookStatus = {
+    userId:'',
+    bookId:'',
+    status:''
+  }
 
   constructor(
     private paginate: PaginationService,
     private auth: AuthService,
-    private home: HomeService
+    private home: HomeService,
+    private ratingandstatus:RatingAndStatusService
   ) {
     this.data = new Array<any>();
   }
 
   ngOnInit(): void {
-    // console.log("hoooooooooooome")
-    // this.paginate.getData().subscribe((data)=>{
-    //   this.data = data.results
-    //   this.totalRecords = data.results.length
-    //   this.currentSection = 'All'
-    //   console.log(this.data)
-    // })
+    
     this.userId = this.auth.getId();
     this.home.getAllBooks('606623d776e86ac9ad8902fd').subscribe(
       (res) => {
@@ -47,51 +54,36 @@ export class HomeComponent implements OnInit {
   }
 
   getCurrentBooks() {
-    // this.paginate.getCurrentlyReading().subscribe((data)=>{
-    //   this.data = data.results
-    //   this.totalRecords = data.results.length
-    //   this.currentSection = "Currently Reading"
-    //   console.log(this.data)
-    // })
+    
     this.userId = this.auth.getId();
-    this.home.getCurrentlyReading(this.userId).subscribe(
+    this.home.getCurrentlyReading('606623d776e86ac9ad8902fd').subscribe(
       (res) => {
         this.data = res;
-        this.currentSection = 'All';
+        this.currentSection = 'Currently Reading';
       },
       (err) => console.log(err)
     );
   }
 
   getWantToReadBooks() {
-    // this.paginate.getWantToRead().subscribe((data)=>{
-    //   this.data = data.results
-    //   this.totalRecords = data.results.length
-    //   this.currentSection = "Want To Read"
-    //   console.log(this.data)
-    // })
+   
     this.userId = this.auth.getId();
     this.home.getWantToRead('606623d776e86ac9ad8902fd').subscribe(
       (res) => {
         this.data = res;
-        this.currentSection = 'All';
+        this.currentSection = 'Want To Read';
       },
       (err) => console.log(err)
     );
   }
 
   getReadBooks() {
-    // this.paginate.getRead().subscribe((data)=>{
-    //   this.data = data.results
-    //   this.totalRecords = data.results.length
-    //   this.currentSection = "Read"
-    //   console.log(this.data)
-    // })
+  
     this.userId = this.auth.getId();
     this.home.getRead('606623d776e86ac9ad8902fd').subscribe(
       (res) => {
         this.data = res;
-        this.currentSection = 'All';
+        this.currentSection = 'Read';
       },
       (err) => console.log(err)
     );
@@ -101,14 +93,25 @@ export class HomeComponent implements OnInit {
     oldValue: number;
     newValue: number;
     starRating: StarRatingComponent;
-  }) {
+  },book:any) {
     alert(`Old Value:${$event.oldValue}, 
       New Value: ${$event.newValue}, 
       Checked Color: ${$event.starRating.checkedcolor}, 
       Unchecked Color: ${$event.starRating.uncheckedcolor}`);
 
-    this.rating = `${$event.newValue}`;
-    console.log(this.rating);
+      this.newRate.rating = `${$event.newValue}`;
+      this.newRate.bookId = book.bookId._id
+      this.newRate.userId = this.userId
+  
+      this.ratingandstatus.changeRating(this.newRate)
+  }
+
+  changeStatus(e:any,book:any){
+    console.log(e.target.value,book.bookId?._id);
+    this.bookStatus.bookId = book.bookId?._id
+    this.bookStatus.userId = this.userId
+    this.bookStatus.status = e.target.value
+    this.ratingandstatus.changeStatus(this.bookStatus)
   }
 
   @Input() allBookslist: Array<{

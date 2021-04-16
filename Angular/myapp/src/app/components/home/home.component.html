@@ -33,14 +33,14 @@
                     <h5>{{book.status}}</h5>
                     <p>{{book.rating}}</p>
                     <star-rating [value]="book.rating" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray"
-                        size="24px" (rate)="onRate($event)"></star-rating>
-                   
-                    <div class="input-group mb-3"> 
-                        <select class="form-select" id="inputGroupSelect01">
+                        size="24px" (rate)="onRate($event,book)"></star-rating>
+                    <div class="input-group mb-3">
+                        <select class="form-select" id="inputGroupSelect01" (change)="changeStatus($event,book)">
+
                             <option selected>{{book.status}}</option>
-                            <option value="1">Currently Reading</option>
-                            <option value="2">Want To Read</option>
-                            <option value="3">Read</option>
+                            <option value="Currently Reading">Currently Reading</option>
+                            <option value="Want To Read">Want To Read</option>
+                            <option value="Read">Read</option>
                         </select>
                     </div>
                 </div>
