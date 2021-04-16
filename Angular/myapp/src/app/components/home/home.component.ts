@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     
     this.userId = this.auth.getId();
-    this.home.getAllBooks('606623d776e86ac9ad8902fd').subscribe(
+    this.home.getAllBooks(this.userId).subscribe(
       (res) => {
         this.data = res;
         this.currentSection = 'All';
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
   getCurrentBooks() {
     
     this.userId = this.auth.getId();
-    this.home.getCurrentlyReading('606623d776e86ac9ad8902fd').subscribe(
+    this.home.getCurrentlyReading(this.userId).subscribe(
       (res) => {
         this.data = res;
         this.currentSection = 'Currently Reading';
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
   getWantToReadBooks() {
    
     this.userId = this.auth.getId();
-    this.home.getWantToRead('606623d776e86ac9ad8902fd').subscribe(
+    this.home.getWantToRead(this.userId).subscribe(
       (res) => {
         this.data = res;
         this.currentSection = 'Want To Read';
@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
   getReadBooks() {
   
     this.userId = this.auth.getId();
-    this.home.getRead('606623d776e86ac9ad8902fd').subscribe(
+    this.home.getRead(this.userId).subscribe(
       (res) => {
         this.data = res;
         this.currentSection = 'Read';

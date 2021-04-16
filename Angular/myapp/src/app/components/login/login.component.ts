@@ -12,10 +12,13 @@ export class LoginComponent implements OnInit {
 
   loginUserData = {email:'',password:''}
   userId:any = ''
+  
   constructor(private auth:AuthService,private router:Router , private fb:FormBuilder) { }
 
   ngOnInit(): void {
-
+if(this.auth.loggedIn()){
+  this.router.navigateByUrl('/home');
+}
   }
 
   get email() { return this.loginForm.get('email'); }
