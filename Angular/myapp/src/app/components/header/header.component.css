@@ -34,3 +34,8 @@
     /* margin-left: 30px; */
     text-align: center;
 }
+
+.logout{
+    float: right;
+    margin-left: 350px;
+}
