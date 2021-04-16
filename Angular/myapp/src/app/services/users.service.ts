@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../components/models/user';
 
@@ -10,27 +10,27 @@ export class UsersService {
   constructor(private client: HttpClient) {
     console.log('service ctor')
   }
-  
+
   readonly baseURL: string = "http://localhost:8000/users";
   readonly userBooks: string = "http://localhost:8000/users/606623d776e86ac9ad8902fd/books";
   readonly catURL: string = "http://localhost:8000/categories";
   readonly authURL: string = "http://localhost:8000/authors";
   readonly bookURL: string = "http://localhost:8000/books";
-  
+
   getUsers() {
-  return this.client.get(this.baseURL,{observe:'response'})
+    return this.client.get(this.baseURL, { observe: 'response' })
   }
 
   getAuthors() {
-    return this.client.get(this.authURL,{observe:'response'})
-    }
-    
-  getCategories(){
-    return this.client.get(this.catURL, {observe:'response'})
+    return this.client.get(this.authURL, { observe: 'response' })
   }
 
-  getBooks(){
-    return this.client.get(this.bookURL, {observe:'response'})
+  getCategories() {
+    return this.client.get(this.catURL, { observe: 'response' })
+  }
+
+  getBooks() {
+    return this.client.get(this.bookURL, { observe: 'response' })
   }
 
   getBookById(id: number) {
@@ -38,9 +38,10 @@ export class UsersService {
   }
 
   getUserBooks() {
-    return this.client.get(this.userBooks,{observe:'response'})
+    return this.client.get(this.userBooks, { observe: 'response' })
   }
-  
+
+
   getUserById(id: number) {
     return this.client.get(`${this.baseURL}/${id}`)
   }
@@ -52,14 +53,17 @@ export class UsersService {
   getCategoryById(id: string) {
     return this.client.get(`${this.catURL}/${id}`)
   }
-  
 
-  deleteUser(id: number){
+
+  deleteUser(id: number) {
     return this.client.delete(`${this.baseURL}/${id}`)
   }
 
-  addUser(user:User){
-    return this.client.post(this.baseURL,user)
+  addUser(user: User) {
+    return this.client.post(this.baseURL, user)
+  }
+  addReview(userId: string, body: Object) {
+    return this.client.post(`${this.baseURL}/${userId}/add-review`, body)
   }
 }
 

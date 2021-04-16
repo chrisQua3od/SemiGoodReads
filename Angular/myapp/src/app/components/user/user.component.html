@@ -1,25 +1,2 @@
-<!-- <div class="alert">
-    <h3>Name:{{student.name}}</h3>
-    Email: <a [routerLink]="student.id.toString()">{{student.email}}</a>
-    <h3>City: {{student.city}}</h3>
-    <hr><hr>
-</div> -->
-
-<!-- <div class="mx-auto card">
-            <h4>Name: {{author.fname}}</h4>
-            <img src="{{author.photo}}" alt="No image"><hr><hr>
-            <!-- <td><a [routerLink]="user.id.toString()">{{user.email}}</a></td> -->
-<!-- </div> -->
-
-<h3>{{author.fname}}</h3> -->
-<h3>{{author._id}}</h3>
-<!-- <!-- <h3><a [routerLink]="author._id.toString()">{{author.fname}}</a></h3> -->
-<a [routerLink]="author._id.toString()">
-    <img src="{{author.photo}}" width="10%" height="20%" alt="No image">
-</a>
-<hr><hr>
-
-<!-- <h2>{{book.status}}</h2>
-<h2>{{book.rating}}</h2> -->
-
-<hr>
+<app-header></app-header>
+<router-outlet></router-outlet>

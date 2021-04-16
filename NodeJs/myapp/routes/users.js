@@ -3,16 +3,20 @@ const userModel = require('../models/users')
 const userRouter = express.Router();
 const UserController = require('../controllers/users')
 
-
 ///bassiony
 userRouter.get("/:id/books", UserController.getBooks);
 userRouter.get("/:id", UserController.getUser)
+userRouter.patch("/:id", UserController.updateUser)
 userRouter.post("/", UserController.saveNewUser);
 userRouter.get("/:id/read", UserController.getReadBooks);
-userRouter.get("/:id/wantToRead", UserController.getWantToReadBooks);
-userRouter.get("/:id/currentlyReading", UserController.getCurrentlyReadingBooks);
-userRouter.patch("/:id/addBook", UserController.addBookForUser)
-userRouter.patch("/:id/addReview", UserController.addBookReview)
+userRouter.get("/:id/want-to-read", UserController.getWantToReadBooks);
+userRouter.get("/:id/currently-reading", UserController.getCurrentlyReadingBooks);
+userRouter.post("/:id/add-book", UserController.addBookForUser);
+userRouter.post("/:id/add-review", UserController.addBookReview);
+userRouter.post("/:id/add-rating", UserController.addBookRating);
+userRouter.patch("/:id/edit-rating", UserController.editBookRating);
+userRouter.patch("/:id/edit-status", UserController.editBookStatus);
+userRouter.patch("/:id/delete-book", UserController.deleteBook)
 ///bassiony
 
 userRouter.get("/", UserController.getUsers);

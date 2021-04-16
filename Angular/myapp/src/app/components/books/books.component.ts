@@ -12,7 +12,7 @@ import { Book } from '../models/user';
 })
 export class BooksComponent implements OnInit,OnDestroy {
 
-  books:Array<Book> = []
+    @Input() books:Array<Book> = []
   totalRecords:string = ''
   page:number=1
   constructor(private myService:UsersService) { }
@@ -37,7 +37,8 @@ export class BooksComponent implements OnInit,OnDestroy {
       }  
     )
   }
- 
+
+
 
 }
 
