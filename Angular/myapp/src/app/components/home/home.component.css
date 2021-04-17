@@ -1,35 +1,28 @@
-
-
-#photo{
-    width: 150px;
-    height: 180px;
+#photo {
+    width: 180px;
+    height: 220px;
 }
 
-.bookView{
-    margin-top: 15px;
-    margin-left: 15px;
-    height: 200px;
-    border-bottom: 1px solid black;
-}
-
-.shelf{
+.shelf {
     margin-top: 10px;
     border-bottom: 1px solid black;
     width: 10%;
 }
 
-a{
+a {
     cursor: pointer;
 }
+
 body {
     margin: 0;
     font-family: "Lato", sans-serif;
-  }
-  ul.a {
+}
+
+ul.a {
     list-style-type: none;
-  }
-  
-  .sidebar {
+}
+
+.sidebar {
     margin: 0;
     padding: 0;
     width: 200px;
@@ -37,37 +30,35 @@ body {
     position: fixed;
     height: 100%;
     overflow: auto;
-  
-  }
+}
 
+.sidebar a:hover:not(.active) {
+    background-color: rgb(179 26 26);
+}
 
-  
-  
-  .sidebar a:hover:not(.active) {
-    /* background-color: #DC3545; */
-    background-color:rgba(53, 3, 3, 0.781)
-  }
-  
-  div.content {
+div.content {
     margin-left: 200px;
     padding: 1px 16px;
     height: 1000px;
-  }
-  
-  @media screen and (max-width: 700px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    .sidebar a {float: left;}
-    div.content {margin-left: 0;}
-  }
-  
-  @media screen and (max-width: 400px) {
-    .sidebar a {
-      text-align: center;
-      float: none;
-    }
-  }
+}
 
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .sidebar a {
+        float: left;
+    }
+    div.content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}

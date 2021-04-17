@@ -8,21 +8,29 @@
     white-space: nowrap;
     font-size: x-large;
     font-weight: bold;
-    
 }
+
+.navbar-nav li>a.active {
+    color: rgb(165, 19, 19);
+    font-size: large;
+    font-weight: bolder;
+}
+
+
 /* .header{
     position: fixed;
 } */
 
-.navbar-nav li{
+.navbar-nav li {
     margin-left: 30px;
     font-size: large;
     font-weight: bold;
 }
 
-.searchbox{
+.searchbox {
     margin-left: 120px;
 }
+
 .modal-content {
     position: relative;
     display: flex;
@@ -39,7 +47,7 @@
     text-align: center;
 }
 
-.logout{
+.logout {
     float: right;
     margin-left: 10%;
 }

@@ -1,28 +1,30 @@
-
-<div class="card cat" style="width: 18rem;" >
-    <div class="card-body" >
-        <h5 class="card-title"> <a href="#" >{{category.name}}</a></h5>
+<div class="card cat" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"> <a href="#">{{category.name}}</a></h5>
         <a [routerLink]="category._id.toString()">More Details</a>
     </div>
 </div>
 
 <style>
-    .cat{
+    .cat {
         border-radius: 20px;
-        box-shadow: 3px 5px #44020248;
-        background-color:rgba(53, 3, 3, 0.781)
+        box-shadow: 3px 5px #00000048;
+        background-color: #232323;
     }
-    a{
-        color: cornsilk  ; 
+    
+    a {
+        color: cornsilk;
         text-decoration: none;
         font-size: 22px;
-      font-family: 'Amiri', serif;
+        font-family: 'Amiri', serif;
     }
-    a:hover{
-       color: black;
-       font-weight: bold;
+    
+    a:hover {
+        color: black;
+        font-weight: bold;
     }
-    img{
+    
+    img {
         height: 180px;
     }
 </style>

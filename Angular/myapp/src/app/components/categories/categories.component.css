@@ -1,9 +1,10 @@
-
-div{
-margin: 15px;
-margin-left: 30px;
+div {
+    margin: 15px;
+    margin-left: 30px;
 }
-.cat::after {
+
+
+/* .cat::after {
     content: "";
     background: url(https://besthqwallpapers.com/Uploads/30-3-2020/126996/thumb2-books-reading-books-background-with-books-bookshelf.jpg);
     background-repeat: no-repeat;
@@ -19,4 +20,4 @@ margin-left: 30px;
     position: absolute;
     z-index: -1;
   
-}
+} */

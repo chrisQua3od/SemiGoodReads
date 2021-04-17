@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+
 /* img{
     height: 180px;
 }
@@ -8,9 +10,12 @@ padding-top: 10px;
 
 } */
 
+
 /* div {
   padding-top: 10px;
 } */
+
+
 /* a{
   color: rgb(14, 12, 12);
   text-decoration: none;
@@ -22,9 +27,9 @@ a:hover {
 
 } */
 
-body{
-  background-color:beige;
-  /* background-color:rgba(240, 234, 229, 0.836); */
-  padding: 0;
-  margin: 0;
+body {
+    background-color: #F5F5F5;
+    /* background-color:rgba(240, 234, 229, 0.836); */
+    padding: 0;
+    margin: 0;
 }

@@ -1,5 +1,5 @@
 <div class="card-group">
-    <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="books.length > 0 ;else emptyList" >
+    <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="books.length > 0 ;else emptyList">
         <app-book *ngFor="let book of books | paginate:{
             id:'listBooks',
             itemsPerPage:6,
@@ -8,12 +8,17 @@
         }" [bookInfo]="book"></app-book>
     </div>
 </div>
-  
-    <ng-template #emptyList>
-        <p>No Books in the list -> <a routerLink="">navigate to home</a></p>
-    </ng-template>
 
-    <div class="pagination justify-content-center">
-        <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>
-    </div>
+<ng-template #emptyList>
+    <p>No Books in the list -> <a routerLink="">navigate to home</a></p>
+</ng-template>
 
+<div class="pagination justify-content-center">
+    <pagination-controls class="my-pagination" id="listBooks" (pageChange)="page=$event"></pagination-controls>
+</div>
+
+<style>
+    .my-pagination /deep/ .ngx-pagination .current {
+        background: rgb(179 26 26);
+    }
+</style>
