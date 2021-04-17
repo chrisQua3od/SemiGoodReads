@@ -53,8 +53,8 @@
               (change)='onFileChange($event)'>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" #close>Close</button>
-            <button type="sumbit" class="btn btn-primary" (click)="close.click()" [disabled]='editBookForm.invalid'>Save
+            <button type="button" class="btn btn-danger" data-dismiss="modal" #close>Close</button>
+            <button type="sumbit" class="btn btn-danger" (click)="close.click()" [disabled]='editBookForm.invalid'>Save
               changes</button>
           </div>
         </form>

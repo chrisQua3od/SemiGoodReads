@@ -19,8 +19,8 @@
           <p class="text-danger" *ngIf='this.editFormControl.name.invalid&&this.editFormControl.name.touched'>
             Please Enter Category Name </p>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" #close>Close</button>
-            <button type="sumbit" class="btn btn-primary" (click)="close.click()"
+            <button type="button" class="btn btn-danger" data-dismiss="modal" #close>Close</button>
+            <button type="sumbit" class="btn btn-danger" (click)="close.click()"
               [disabled]='editForm.invalid||editFormControl.name.untouched'>Save
               changes</button>
           </div>

@@ -20,8 +20,8 @@
           <p class="text-danger" *ngIf='this.addForm.controls["name"].invalid&&this.addForm.controls["name"].touched'>
             Please Enter Category Name </p>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="sumbit" class="btn btn-primary" (click)="close.click()" [disabled]='addForm.invalid'>Save
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="sumbit" class="btn btn-danger" (click)="close.click()" [disabled]='addForm.invalid'>Save
               changes</button>
           </div>
         </form>
