@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -11,26 +11,33 @@ import { BooksService } from 'src/app/services/books.service';
 import { Book } from '../models/book';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { Subscription } from 'rxjs';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,OnDestroy {
   searchForm = new FormGroup({
     searchVal: new FormControl(''),
   });
   books:Array<Book> = []
   filteredList :Array <Book> = this.books;
-  logoutIcon:boolean = true
-  constructor(private myService:BooksService,private modalService: NgbModal,private router:Router,private auth:AuthService) { }
+  logoutIcon:boolean = false
+
+  subscription !: Subscription;
+  constructor(private myService:BooksService,private modalService: NgbModal,private router:Router,private auth:AuthService,private home:HomeService) { }
 
   ngOnInit(): void {
     this.logoutIcon = this.auth.loggedIn()
-
+    this.subscription = this.home.currentMessage.subscribe(message => this.logoutIcon = message)
+    console.log(this.logoutIcon);
+    
   }
+
+
   get search() {
     return this.searchForm.get('searchVal');
   }
@@ -75,10 +82,15 @@ export class HeaderComponent implements OnInit {
     if(conf){
       localStorage.removeItem('id')
       localStorage.removeItem('token')
+      this.logoutIcon = false
       this.router.navigateByUrl('/login')
     }else{
         //do nothing
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 

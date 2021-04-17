@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { HomeService } from 'src/app/services/home.service';
 import { PaginationService } from 'src/app/services/pagination.service';
@@ -6,13 +6,14 @@ import { StarRatingComponent } from 'ng-starrating';
 import { RatingAndStatusService } from 'src/app/services/rating-and-status.service';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,OnDestroy {
   data: Array<any> = [];
   totalRecords: string = '';
   page: number = 1;
@@ -32,6 +33,9 @@ export class HomeComponent implements OnInit {
     status: ''
   }
 
+  message !:boolean;
+  subscription !: Subscription;
+
   constructor(
     private paginate: PaginationService,
     private auth: AuthService,
@@ -45,13 +49,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.subscription = this.home.currentMessage.subscribe(message => this.message = message)
+    this.home.changeMessage(true)
+    console.log(this.message);
+    
     this.userId = this.auth.getId();
     this.home.getAllBooks(this.userId).subscribe(
       (res) => {
         this.data = res;
         this.currentSection = 'All';
-        console.log(res);
-        console.log(this.data);
+        // console.log(res);
+        // console.log(this.data);
       },
       (err) => {
         if (err.status === 403)
@@ -114,6 +122,10 @@ export class HomeComponent implements OnInit {
     this.bookStatus.bookId = book.bookId?._id
     this.bookStatus.status = e.target.value
     this.userService.editStatus(this.userId, this.bookStatus).subscribe(res => console.log(res));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   @Input() allBookslist: Array<{
