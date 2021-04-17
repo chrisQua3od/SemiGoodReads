@@ -3,17 +3,18 @@
 }
 .par{
 
-
+padding: 5px;
 box-shadow: 2px 5px grey;
 background-color: white;
 margin-top: 1px;
-margin-bottom: 4px;
+margin-bottom: 24px;
 border: 0.5px  ;
 
 
 }
 .pra{
-  margin-left: 3px;
+  padding: 5px;
+
   text-shadow: black;
   font-weight: bolder;
   color:darkslategray;
