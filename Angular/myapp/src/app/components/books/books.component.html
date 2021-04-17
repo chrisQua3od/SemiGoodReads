@@ -1,0 +1,19 @@
+<div class="card-group">
+    <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="books.length > 0 ;else emptyList" >
+        <app-book *ngFor="let book of books | paginate:{
+            id:'listBooks',
+            itemsPerPage:6,
+            currentPage:page,
+            totalItems:totalRecords
+        }" [bookInfo]="book"></app-book>
+    </div>
+</div>
+  
+    <ng-template #emptyList>
+        <p>No Books in the list -> <a routerLink="">navigate to home</a></p>
+    </ng-template>
+
+    <div class="pagination justify-content-center">
+        <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>
+    </div>
+

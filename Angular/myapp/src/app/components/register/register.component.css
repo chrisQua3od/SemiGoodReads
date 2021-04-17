@@ -1,0 +1,81 @@
+.reg-fields{
+    padding: 5px;
+    width: 60%;
+}
+
+
+.form{
+    height: auto;
+}
+
+.form-title{
+    color:#716868;
+    font-weight: bolder;
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-left: 30%;
+}
+
+.input-field{
+    width: 100%;
+    background: #eeeeee;
+    border: none;
+    padding: 12px;
+    margin: 7px;
+    text-align: center;
+    outline: none;
+    font-size: 20px;
+}
+
+.input i{
+    position: absolute;
+    top: 20px;
+    left: 13px;
+    width: 10px;
+}
+
+.reg-btn {
+    width: 70%;
+    margin: 20px auto 0;
+    padding: 12px;
+    text-align: center;
+    margin-left: 67px;
+    border-radius: 25px;
+    font-size: x-large;
+    font-weight: bold;
+    background: no-repeat;
+}
+
+.reg-btn:hover {
+    background: blue;
+    color: white;
+}
+
+.fa-window-close{
+    background: none;
+    outline: none;
+    border: none;
+
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 30px;
+    margin-left: 10px;
+}
+.submit{
+    margin: auto;
+}
+
+.btn1{
+    border: none;
+    outline: none;
+    height:50px;
+    width: 100%;
+    background-color: black ;
+    color: white;
+    border-radius: 4px;
+    font-size: x-large;
+
+}

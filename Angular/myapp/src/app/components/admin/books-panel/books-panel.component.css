@@ -1,0 +1,32 @@
+button {
+  float: right;
+  margin: 20px;
+}
+.fa-plus {
+  padding: 0px;
+  margin: 0px;
+}
+i {
+  margin-right: 30px;
+  cursor: pointer;
+}
+td,
+th {
+  width: 200px;
+}
+img {
+  width: 130px;
+  height: 180px;
+}
+.table {
+  color:firebrick;
+  font-size: larger;
+  font-weight: bolder;
+  
+  }
+  div{
+    background: url(https://thumbs.dreamstime.com/z/man-reading-book-next-to-wall-painted-man-reading-book-next-to-wall-painted-suggesting-imagination-chaotic-creative-112248497.jpg);
+    
+    
+      }
+    

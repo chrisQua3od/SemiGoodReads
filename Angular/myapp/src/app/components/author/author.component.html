@@ -1,0 +1,37 @@
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+
+<div class="card author">
+    <img  src="{{author.photo}}" class="card-img-top" alt="...">
+<div class="card-body">
+        <h5 class="card-title"> <a href="#">{{author.fname}} {{author.lname}}</a></h5>
+        <a [routerLink]="author._id.toString()">More Details</a>
+        
+        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+        <!-- <a href="#" class="btn btn-primary" style="background-color: #dc3545 ;color: white;">See More ?</a> -->
+    </div>
+</div>
+
+<style>
+    .author{
+        border-radius: 20px;
+        box-shadow: 3px 5px #44020248;
+    }
+    a{
+        text-decoration: none; 
+        color:black ;
+        font-size: 22px;
+      font-family: 'Amiri', serif;
+    }
+    a:hover{
+       color: black;
+       font-weight: bold;
+    }
+    img{
+        height: 180px;
+        border-top-left-radius: 20px;
+        border-top-right-radius:20px ;
+    }
+</style>
+

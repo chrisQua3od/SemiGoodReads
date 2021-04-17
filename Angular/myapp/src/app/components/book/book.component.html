@@ -1,0 +1,36 @@
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Sirin+Stencil&display=swap" rel="stylesheet">
+
+
+
+
+<div class="card book"style="width: 18rem">
+   
+    <div class="card-body" style="text-align: center;">
+        <h5   class="card-title"> <a href="#"  >{{book.name}}</a></h5>
+        <img  src="{{book.cover}}" alt=""><br>
+        
+        <a  [routerLink]="book._id.toString()">More Details</a>
+    </div>
+</div>
+<style>
+    .book{
+        border-radius: 20px;
+        box-shadow: 3px 5px #44020248;
+    }
+    a{
+        text-decoration: none; 
+        color:black ;
+        font-size: 22px;
+      font-family: 'Amiri', serif;
+    }
+    a:hover{
+       color: black;
+       font-weight: bold;
+    }
+    img{
+        height: 180px;
+    }
+</style>

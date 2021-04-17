@@ -1,0 +1,10 @@
+/* *, *::before, *::after {
+   
+    margin: auto;
+} */
+div{
+
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-lg-3 ">
+      <img class="rounded mx-auto d-block rounded cover shadow p-3 mb-5 " src="{{books.cover}}" alt="">
+      <p style="text-align: center;">By {{books.author.fname}} {{books.author.lname}}</p>
+      <star-rating style="text-align: center;" [value]="books.sumAvg/books.countAvg" [totalstars]="5"
+        checkedcolor="gold" uncheckedcolor="gray" size="24px" (rate)="onRate($event)"></star-rating>
+      <div class="input-group mb-3">
+        <select class="form-select" id="inputGroupSelect01" (change)="changeStatus($event)">
+          <option value="Currently Reading">Currently Reading</option>
+          <option value="Want To Read">Want To Read</option>
+          <option value="Read">Read</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <h1 class="fw-bold text-center">{{books.name}}</h1>
+      <h5>{{books.sumary}}</h5>
+    </div>
+  </div>
+  <hr>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let review of books.reviews">{{review.body}}</li>
+  </ul>
+
+  <div class="input-group">
+
+    <span class="input-group-text">With textarea</span>
+
+    <textarea class="form-control" aria-label="With textarea" #review placeholder="Enter Your Review"
+      required></textarea>
+
+    <button class="btn btn-danger" (click)='addReview(review.value)'>Add Review</button>
+
+  </div>
+  <br />
+</div>

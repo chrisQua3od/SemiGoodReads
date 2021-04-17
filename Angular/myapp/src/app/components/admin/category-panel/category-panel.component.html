@@ -1,0 +1,27 @@
+<div>
+<button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">
+    <i class="fas fa-plus"></i>
+</button>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col" class="p-3">Id</th>
+            <th scope="col" class="p-3">Name</th>
+            <th scope="col " class="p-3">Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let category of categories let index=index;">
+        <tr>
+            <th scope="row" class="p-3">{{index+1}}</th>
+            <td class="p-3">{{category?.name}}</td>
+            <td class="p-3">
+                <i class="fas fa-pen " data-toggle="modal" data-target="#editModal"
+                    (click)="updateCategory(category) "></i>
+                <i class="fas fa-trash" (click)="deleteCategory(category)"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<app-edit-category [category]='editCategory'></app-edit-category>
+<app-add-category></app-add-category>
+</div>

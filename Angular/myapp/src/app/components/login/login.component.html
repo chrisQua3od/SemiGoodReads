@@ -1,0 +1,46 @@
+<div class="cont">
+  <section class="Form my-4 mx-5">
+    <div class="container">
+
+        <div class="row g-0">
+            <div class="col-lg-5">
+                <img  src="assets/img/gettyimages-1170941183-c1e33a9a2b274d5381f14d18f71db5ee0342aec3-s800-c85.jpg"
+                    class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-7 px-5 pt-5">
+                <h1 class="py-3">GoodReads</h1>
+                <h4>Sign into your Account</h4>
+                <form [formGroup]="loginForm" (ngSubmit)="loginClicked()">
+                    <div class="form-row">
+                        <div class="col-lg-7">
+                            <input formControlName='email' class="my-1 p-2 wid" type="email" placeholder="email">
+                            <span class="error text-danger text-center"
+                                *ngIf="email?.invalid && email?.touched">***Invalid Email</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-7">
+                            <input formControlName='password' class="my-1 p-2 wid" type="password"
+                                placeholder="********">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-7">
+                            <button type="submit" class="btn1 mt-1 mb-3">Login</button>
+                        </div>
+                    </div>
+
+                </form>
+                <h6>Don't have an account? <app-register></app-register> </h6>
+
+         
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- [formGroup]="registrationForm" (ngSubmit)="onSubmit()" -->
+<!-- [disabled]="!registrationForm.valid" -->

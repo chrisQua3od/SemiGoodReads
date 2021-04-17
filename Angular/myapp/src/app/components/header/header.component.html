@@ -1,0 +1,41 @@
+<div class="sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+  <a class="navbar-brand" href="#" data-abc="true">GoodReads</a> 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span> 
+  </button>
+  <div class="collapse navbar-collapse d-flex" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+          <li  class="nav-item active"> <a [routerLinkActiveOptions]='{exact:true}' routerLinkActive="text-danger" routerLink="home" class="nav-link"  data-abc="true">Home</a> </li>
+          <li class="nav-item"> <a routerLinkActive="text-danger" routerLink="books" class="nav-link" href="#" data-abc="true">Books</a> </li>
+          <li class="nav-item"> <a routerLinkActive="text-danger" routerLink="authors" class="nav-link" href="#" data-abc="true">Authors</a> </li>
+          <li class="nav-item"> <a routerLinkActive="text-danger" routerLink="categories" class="nav-link" href="#" data-abc="true">Categories</a> </li>
+          <!-- <li class="nav-item"> <a routerLinkActive="text-danger" routerLink="login" class="nav-link" href="#" data-abc="true">login</a> </li> -->
+        </ul>
+      <form class="d-flex form-inline my-2 my-lg-0 searchbox" [formGroup]="searchForm" (ngSubmit)="onSubmit()" > 
+        <input  formControlName='searchVal' class="form-control mr-sm-2" type="text" placeholder="Search"> 
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="open(mymodal)" >Search</button> 
+      </form>
+
+      <button class="logout" (click)="logOut()" *ngIf="logoutIcon"><i class="fas fa-sign-out-alt"></i></button>
+  </div>
+</nav>
+</div>
+
+<ng-template #mymodal let-modal >
+  <div class="modal-content">
+  <div class="modal-header" >
+    <h4 class="modal-title" id="modal-basic-title">Search Results</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+    
+    <app-books [books]="filteredList" >
+
+    </app-books>
+  </div>
+</div>
+</ng-template>

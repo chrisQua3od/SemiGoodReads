@@ -1,0 +1,22 @@
+
+div{
+margin: 15px;
+margin-left: 30px;
+}
+.cat::after {
+    content: "";
+    background: url(https://besthqwallpapers.com/Uploads/30-3-2020/126996/thumb2-books-reading-books-background-with-books-bookshelf.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center; 
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  
+}

@@ -1,0 +1,17 @@
+
+<div class="cat card-group">
+    <div class="row row-cols-1 row-cols-md-3 g-3  categories"*ngIf="categories.length > 0 ;else emptyList" >
+        <app-category *ngFor="let category of categories | paginate:{
+            id:'listBooks',
+            itemsPerPage:9,
+            currentPage:page,
+            totalItems:totalRecords
+        }" [categoryInfo]="category"></app-category>
+    </div>
+</div>
+    <ng-template #emptyList>
+        <p>No categories in the list -> <a routerLink="">navigate to home</a></p>
+    </ng-template>
+    <div class="pagination justify-content-center fixed-bottom ">
+        <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>
+    </div>

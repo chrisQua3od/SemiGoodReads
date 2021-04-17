@@ -1,0 +1,25 @@
+
+
+<div class="authors row row-cols-1 row-cols-md-2 g-4 " *ngIf="authors.length > 0 ;else emptyList">
+
+    <app-author class="card-columns" style="width: 18rem;" *ngFor="let author of authors | paginate:{
+
+            id:'listBooks',
+            itemsPerPage:8,
+            currentPage:page,
+            totalItems:totalRecords
+        }" [routerLink]="author._id.toString()" [authorInfo]="author"></app-author>
+</div>
+
+<ng-template #emptyList>
+  <p>No Authors in the list -> <a routerLink="">navigate to home</a></p>
+</ng-template>
+
+
+
+<!-- </div> -->
+
+
+<div class="pagination justify-content-center">
+    <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>
+</div>
