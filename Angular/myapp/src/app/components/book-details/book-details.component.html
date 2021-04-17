@@ -19,10 +19,10 @@
     </div>
   </div>
   <hr>
-  <div *ngFor="let review of books.reviews">
-    <p class="par" >{{review.user?.fname}} {{review.user?.lname}}  </p>
-    <p> {{review.body}} </p>
-    <hr>
+  <div *ngFor="let review of books.reviews" class="par">
+    <p class="pra">{{review.user?.fname}} {{review.user?.lname}}  </p>
+    <p class="rev"> {{review.body}} </p>
+    
   </div>
 
   <form action="" [formGroup]="ReviewForm" (ngSubmit)="onSubmit()"  style="display: flex;;" >

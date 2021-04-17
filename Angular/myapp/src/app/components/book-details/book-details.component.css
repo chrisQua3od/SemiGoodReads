@@ -2,6 +2,22 @@
   height: 20rem;
 }
 .par{
-font-weight: bolder;
 
+
+box-shadow: 2px 5px grey;
+background-color: white;
+margin-top: 1px;
+margin-bottom: 4px;
+border: 0.5px  ;
+
+
+}
+.pra{
+  margin-left: 3px;
+  text-shadow: black;
+  font-weight: bolder;
+  color:darkslategray;
+}
+.rev{
+  margin-left: 3px;
 }
