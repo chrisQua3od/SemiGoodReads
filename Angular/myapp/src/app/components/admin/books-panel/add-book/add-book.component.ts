@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/components/models/category';
@@ -16,16 +15,16 @@ export class AddBookComponent implements OnInit {
   categories!: any;
   authors: any;
   addBookForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]+")]),
     categoryId: new FormControl('', Validators.required),
     author: new FormControl('', Validators.required),
-    cover: new FormControl('', Validators.required),
     sumary: new FormControl('', Validators.required),
+    cover: new FormControl(null, Validators.required),
   });
   constructor(
     private bookService: BooksService,
     private categoryService: CategoryService,
-    private authorSerice: AuthorService
+    private authorSerice: AuthorService,
   ) { }
 
   ngOnInit(): void {
@@ -36,8 +35,25 @@ export class AddBookComponent implements OnInit {
       .getAuthors()
       .subscribe((res) => (this.authors = res.body));
   }
+  get formControls() {
+    return this.addBookForm.controls
+  }
+  onFileChange(event: any) {
+    console.log(event.target.files)
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.addEventListener('load', (evt) => {
+        if (evt.loaded === evt.total)
+          this.addBookForm.patchValue({
+            cover: reader.result
+          });
+      });
+    }
+  }
   addBook() {
-    console.log(this.addBookForm.value);
+    console.log(this.addBookForm.value.cover)
     this.bookService.addBook(this.addBookForm.value).subscribe((res) => {
       console.log(res);
     });

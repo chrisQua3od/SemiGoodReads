@@ -11,14 +11,13 @@ export class AddItemComponent implements OnInit {
   addForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
   });
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   addCategory() {
     console.log(this.addForm.value.name);
     this.categoryService
       .addCategory(this.addForm.value)
-      .subscribe((data) => console.log(data));
   }
   @Input() headers: any;
 }
