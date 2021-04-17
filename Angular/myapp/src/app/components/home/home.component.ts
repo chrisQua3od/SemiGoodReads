@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit {
   }
 
   getWantToReadBooks() {
+
     this.userId = this.auth.getId();
     this.home.getWantToRead(this.userId).subscribe(
       (res) => {

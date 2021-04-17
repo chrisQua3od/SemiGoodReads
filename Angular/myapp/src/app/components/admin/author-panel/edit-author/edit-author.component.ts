@@ -10,17 +10,22 @@ import { AuthorService } from 'src/app/services/authors.service';
 export class EditAuthorComponent implements OnInit, OnChanges {
   editAuthorForm!: FormGroup;
   @Input() updatedAuthor: any;
-  constructor(private authorServie: AuthorService) {}
-  ngOnInit(): void {}
+
+  constructor(private authorServie: AuthorService) { }
+  ngOnInit(): void { }
   ngOnChanges() {
     this.editAuthorForm = new FormGroup({
-      fname: new FormControl(this.updatedAuthor?.fname, [Validators.required]),
-      lname: new FormControl(this.updatedAuthor?.lname, [Validators.required]),
+      fname: new FormControl(this.updatedAuthor?.fname, [Validators.required, Validators.pattern("[a-zA-Z]+")]),
+      lname: new FormControl(this.updatedAuthor?.lname, [Validators.required, Validators.pattern("[a-zA-Z]+")]),
       photo: new FormControl(this.updatedAuthor?.photo),
       dateOfBirth: new FormControl(this.updatedAuthor?.dateOfBirth, [
         Validators.required,
       ]),
     });
+  }
+
+  get formControls() {
+    return this.editAuthorForm.controls
   }
   editAuthor() {
     this.authorServie

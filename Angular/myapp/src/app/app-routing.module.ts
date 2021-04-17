@@ -60,7 +60,9 @@ const routes: Routes = [
       { path: 'authors', component: AuthorsComponent,canActivate:[AuthGuard] },
       { path: 'authors/:id', component: AuthorDetailsComponent },
       { path: 'authors/:id/:id', component: BookDetailsComponent },
+
       { path: 'home/:id', component: BookDetailsComponent },
+
       { path: ':id', component: BookDetailsComponent },
     ],
   },
