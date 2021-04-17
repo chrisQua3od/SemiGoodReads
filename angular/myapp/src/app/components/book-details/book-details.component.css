@@ -1,0 +1,24 @@
+.cover {
+  height: 20rem;
+}
+.par{
+
+padding: 5px;
+box-shadow: 2px 5px grey;
+background-color: white;
+margin-top: 1px;
+margin-bottom: 24px;
+border: 0.5px  ;
+
+
+}
+.pra{
+  padding: 5px;
+
+  text-shadow: black;
+  font-weight: bolder;
+  color:darkslategray;
+}
+.rev{
+  margin-left: 3px;
+}

@@ -1,0 +1,81 @@
+<!-- <div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <span class="anchor" id="formLogin"></span>
+  
+        form card login
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0">Register</h3>
+          </div>
+          <div class="card-body">
+            <form class="form">
+              <div class="form-group">
+                <label for="uname1">Username</label>
+                <input type="text" [(ngModel)]="registerUserData.email" name="email" class="form-control rounded-0" required>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" [(ngModel)]="registerUserData.password" name="password" class="form-control rounded-0"  required>
+              </div>
+              <button type="button" (click)="registerUser()" class="btn btn-primary float-right">Register</button>
+            </form>
+          </div>
+          /card-block
+        </div>
+        /form card login
+  
+      </div>
+  
+  
+    </div>
+  </div> -->
+  <button class="btn btn-lg btn-outline-primary register" (click)="open(mymodal)">Register</button>
+  <ng-template #mymodal let-modal class='form'>
+    <div class="modal-header">
+      <h4 class="modal-title form-title" id="modal-basic-title">Register</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true"><i class="far fa-window-close"></i></span>
+
+      </button>
+    </div>
+    <div class="modal-body">
+      <form action="" [formGroup]="registerationForm" (ngSubmit)="onSubmit()">
+        <div class="position-relative input" >
+          <input  formControlName='firstName' class="reg-fields mb-1 input-field" type="text" placeholder="FirstName ...">
+          <i class="fas fa-user"></i>
+          <span class="error text-danger text-center" *ngIf="name?.invalid && name?.touched">***Required</span>
+        </div>
+        <div class="position-relative input">
+          <input  formControlName='lastName' class="reg-fields mb-1 input-field" type="text" placeholder="LastName ...">
+          <i class="fas fa-user"></i>
+          <span class="error text-danger text-center" *ngIf="lname?.invalid && lname?.touched">***Required</span>
+        </div>
+        <div class="position-relative input">
+          <input  formControlName='email' class="reg-fields mb-1 input-field" type="email" placeholder="Email ...">
+          <i class="fas fa-at"></i>
+          <span class="error text-danger text-center" *ngIf="email?.invalid && email?.touched">***invalid email</span>
+        </div>
+        <div>
+          <div class="position-relative input">
+            <input  formControlName='password' class="reg-fields mb-1 input-field" type="password" placeholder="Password ...">
+            <i class="fas fa-fingerprint"></i>
+            <span class="error text-danger text-center" *ngIf="password?.invalid && password?.touched">***Min Length 8 Char</span>
+          </div>
+          <div class="position-relative input">
+            <input  formControlName='confirmPassword' class="reg-fields mb-1 input-field" type="password" placeholder="Retype Password ...">
+            <i class="fas fa-fingerprint"></i>
+
+            <span *ngIf="f.confirmPassword?.errors?.mustMatch">Passwords must match</span>
+          </div>
+        </div>
+        
+        
+        <button class='reg-btn' type="submit" (click)="modal.dismiss('Cross click')" [disabled]="registerationForm?.invalid">Submit</button>
+
+        
+    </form>
+    </div>
+  </ng-template>
+
+  

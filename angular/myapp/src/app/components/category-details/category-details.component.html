@@ -1,0 +1,17 @@
+<h2 class="btn-lg btn-primary">{{category.name}} Category Books ( {{category.books.length}} ) </h2>
+<div>
+    <h4 class="text-center"> <i>Books</i> </h4>
+    
+    <div  *ngIf="category.books.length > 0 ;else emptyList">
+        <div *ngFor="let cat of category.books; index as i" class="text-center">
+            <h3>{{i+1}} )  {{category.books[i].name}}</h3>
+            <a [routerLink]="category.books[i]._id.toString()">
+                <img class="rounded mx-auto d-block" src="{{category.books[i].cover}}" alt=""><br>
+            </a><br><br>
+        </div>
+    </div>
+    
+
+<ng-template #emptyList>
+    <p>No Books for this Category</p>
+</ng-template>

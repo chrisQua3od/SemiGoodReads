@@ -1,0 +1,66 @@
+<div class="sidebar">
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a class="nav-link text-white" (click)="ngOnInit()">All</a>
+        </li>
+        <li>
+            <a class="nav-link text-white" (click)="getCurrentBooks()">Currently Reading</a>
+        </li>
+        <li>
+            <a class="nav-link text-white" (click)="getWantToReadBooks()">Want To Read</a>
+        </li>
+        <li>
+            <a class="nav-link text-white" (click)="getReadBooks()">Read</a>
+        </li>
+
+
+    </ul>
+</div>
+
+
+<div class="content">
+    <h4 class="text-center shelf">{{currentSection}}</h4>
+    <div class="card mb-3 p-1" style="max-width: 1200px;" *ngFor="let book of data| paginate:{
+      id:'listBooks',
+      itemsPerPage:3,
+      currentPage:page,
+      totalItems:totalRecords
+      }">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <!-- <img src="{{book.bookId?.cover}}" class="card-img" id="photo" alt="..."> -->
+                <a [routerLink]="book.bookId._id.toString()"><img class="" src="{{book.bookId?.cover}}" alt="" id="photo"></a>
+                <p style="margin:3px;"> Average Rating : {{(book.bookId.sumAvg/book.bookId.countAvg) | number:'1.1-1' }} </p>
+                <div class="input-group">
+                    <select class="form-select" id="inputGroupSelect01" (change)="changeStatus($event,book)">
+            <option selected>{{book.status}}</option>
+            <option value="Currently Reading">Currently Reading</option>
+            <option value="Want To Read">Want To Read</option>
+            <option value="Read">Read</option>
+          </select>
+                </div>
+                <star-rating [value]="book.rating" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="24px" (rate)="onRate($event,book)"></star-rating>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <!-- <h5 class="card-title">{{book.bookId.name}}</h5> -->
+                    <a [routerLink]="book.bookId._id.toString()">
+                        <h5>{{book.bookId.name}}</h5>
+                    </a>
+                    <p class="card-text">{{book.bookId.sumary}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pagination justify-content-center">
+        <pagination-controls class="my-pagination" id="listBooks" (pageChange)="page=$event"></pagination-controls>
+    </div>
+</div>
+
+
+
+<style>
+    .my-pagination /deep/ .ngx-pagination .current {
+        background: rgb(179 26 26);
+    }
+</style>

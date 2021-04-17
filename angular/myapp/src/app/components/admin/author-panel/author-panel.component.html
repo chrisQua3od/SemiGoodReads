@@ -1,0 +1,33 @@
+<div>
+<button type="button" data-toggle="modal" data-target="#authorModal" class="btn btn-danger">
+    <i class="fas fa-plus"></i>
+</button>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Photo</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col ">Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let author of authors let index=index;">
+        <tr>
+            <th scope="row">{{index+1}}</th>
+            <td><img src="{{author?.photo}}" alt=""></td>
+            <td>{{author?.fname}}</td>
+            <td>{{author.lname}}</td>
+            <td>{{author.dateOfBirth | date}}</td>
+            <td>
+                <i class="fas fa-pen " data-toggle="modal" data-target="#editAuthorModal"
+                    (click)="updatedAuthor(author)"></i>
+                <i class=" fas fa-trash" (click)="delteAuthor(author)"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<app-add-author></app-add-author>
+<app-edit-author [updatedAuthor]='editAuthor'></app-edit-author>
+</div>

@@ -1,0 +1,21 @@
+<h2 class="h2 btn-danger btn-lg"> {{author.fname}} {{author.lname}} Profile </h2>
+<div>
+  <h4 class="text-center">{{author.fname}} {{author.lname}}</h4>
+  <h4 class="text-center">{{author.dateOfBirth | date}}</h4>
+  <img src="{{author.photo}}" alt="" srcset="">
+
+  <h2 class="text-center">Books ( {{author.books.length}} )</h2>
+  <hr>
+  <div *ngIf="author.books.length > 0 ;else emptyList">
+    <div *ngFor="let bk of author.books; index as i" class="text-center">
+      <h2>{{i+1}} ) {{author.books[i].name}}</h2>
+      <a [routerLink]="author.books[i]._id.toString()">
+        <img class="rounded mx-auto d-block" src="{{author.books[i].cover}}" alt=""><br>
+      </a><br><br>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyList>
+  <p>Sorry! No Books for this Author</p>
+</ng-template>
