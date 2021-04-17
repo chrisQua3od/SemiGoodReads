@@ -6,10 +6,10 @@
       <star-rating style="text-align: center;" [value]="books.sumAvg/books.countAvg" [totalstars]="5"
         checkedcolor="gold" uncheckedcolor="gray" size="24px" (rate)="onRate($event)"></star-rating>
       <div class="input-group mb-3">
-        <select class="form-select" id="inputGroupSelect01">
-          <option value="1">Currently Reading</option>
-          <option value="2">Want To Read</option>
-          <option value="3">Read</option>
+        <select class="form-select" id="inputGroupSelect01" (change)="changeStatus($event)">
+          <option value="Currently Reading">Currently Reading</option>
+          <option value="Want To Read">Want To Read</option>
+          <option value="Read">Read</option>
         </select>
       </div>
     </div>
@@ -26,11 +26,12 @@
   <div class="input-group">
 
     <span class="input-group-text">With textarea</span>
-    
-    <textarea class="form-control" aria-label="With textarea" #review  placeholder="Enter Your Review" required></textarea>
-  
+
+    <textarea class="form-control" aria-label="With textarea" #review placeholder="Enter Your Review"
+      required></textarea>
+
     <button class="btn btn-danger" (click)='addReview(review.value)'>Add Review</button>
-  
+
   </div>
-<br/>
+  <br />
 </div>

@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { Book } from '../models/book';
 import { Router } from '@angular/router'
 import { StarRatingComponent } from 'ng-starrating';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-book-details',
@@ -11,9 +12,18 @@ import { StarRatingComponent } from 'ng-starrating';
   styleUrls: ['./book-details.component.css'],
 })
 export class BookDetailsComponent implements OnInit, OnDestroy {
+  userId: any
 
-  constructor(private router: Router, private myService: UsersService,
-    private myActivatedRoute: ActivatedRoute) { }
+  bookStatus = {
+    bookId: '',
+    status: ''
+  }
+  constructor(
+    private router: Router,
+    private myService: UsersService,
+    private myActivatedRoute: ActivatedRoute,
+    private authService: AuthService,
+    private userService: UsersService) { }
   ngOnDestroy(): void {
     this.subscriber.unsubscribe();
   }
@@ -48,6 +58,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       }, (err) => {
         console.log(err)
       })
+    this.userId = this.authService.getId();
   }
   onRate($event: {
     oldValue: number;
@@ -58,8 +69,14 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   addReview(review: string) {
     console.log(review)
     console.log(this.books._id)
-    this.myService.addReview("606c45a8b5ad8a61d91ad16e", { bookId: this.books._id, review }).subscribe(
+    this.myService.addReview(this.userId, { bookId: this.books._id, review }).subscribe(
       res => console.log(res),
     );
+  }
+  changeStatus(e: any) {
+    console.log(e.target.value, this.books._id);
+    this.bookStatus.bookId = this.books._id
+    this.bookStatus.status = e.target.value
+    this.userService.addBook(this.userId, this.bookStatus).subscribe(res => console.log(res));
   }
 }

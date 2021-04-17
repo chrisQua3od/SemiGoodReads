@@ -20,13 +20,13 @@ export class AddBookComponent implements OnInit {
     categoryId: new FormControl('', Validators.required),
     author: new FormControl('', Validators.required),
     cover: new FormControl('', Validators.required),
-    sumary: new FormControl('',Validators.required),
+    sumary: new FormControl('', Validators.required),
   });
   constructor(
     private bookService: BooksService,
     private categoryService: CategoryService,
     private authorSerice: AuthorService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.categoryService

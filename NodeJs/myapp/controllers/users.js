@@ -69,7 +69,7 @@ async function getBooksByStatus(userId, status) {
 async function addBookForUser(req, res) {
     try {
         await UserModel.findByIdAndUpdate(req.params.id, { $push: { library: { ...req.body, rating: 0 } } })
-        res.status(200).send("Book Added Succeffully");
+        res.json({ status: 200, message: "Book Added Succeffully" });
     } catch (erro) {
         res.status(400).send("bad request")
     }
@@ -140,7 +140,7 @@ async function editBookRating(req, res) {
         await BookModel.findByIdAndUpdate(req.body.bookId, {
             '$inc': { sumAvg: editRating, countAvg: newCount }
         });
-        res.status(200).send("Rating Added Succeffully");
+        res.json({ message: "Rating Added Succeffully" });
     } catch (error) {
         res.status(500).send("bad request")
     }
@@ -154,7 +154,7 @@ async function editBookStatus(req, res) {
                 new: true
             })
 
-        res.status(200).send("Status Added Succeffully");
+        res.json({ message: "Status Added Succeffully" });
     } catch (error) {
         console.log(error.message)
         res.status(500).send("bad request")

@@ -49,12 +49,12 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/login", loginRouter)
-app.use("/categories", categories);
-app.use("/authors", author);
-app.use("/books", books);
-app.use("/users", users);
+app.use("/categories", authent, categories);
+app.use("/authors", authent, author);
+app.use("/books", authent, books);
+app.use("/users", authent, users);
 app.use("/register", register);
-app.use("/admin",admin)
+app.use("/admin", admin)
 
 app.use((req, res) => {
   res.status(404).send("Sorry can't find that!");
