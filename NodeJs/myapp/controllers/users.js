@@ -129,7 +129,7 @@ async function addBookRating(req, res) {
 }
 async function editBookRating(req, res) {
     const user = await UserModel.findById(req.params.id, { library: { $elemMatch: { bookId: req.body.bookId } } }).select('-_id');
-    const oldRating = user.library[0]?.rating ? user.library[0]?.rating : 0;
+    const oldRating = user.library[0].rating ? user.library[0].rating : 0;
     const newCount = oldRating ? 0 : 1;
     try {
         await UserModel.findByIdAndUpdate(req.params.id,

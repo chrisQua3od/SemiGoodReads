@@ -9,11 +9,13 @@ import { AuthorService } from 'src/app/services/authors.service';
 })
 export class AddAuthorComponent implements OnInit {
   addAuthorForm!: FormGroup;
+
   constructor(private authorService: AuthorService) { }
 
   ngOnInit(): void {
     this.addAuthorForm = new FormGroup({
       photo: new FormControl(''),
+
       fname: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]+")]),
       lname: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]+")]),
       dateOfBirth: new FormControl(null, [Validators.required]),
@@ -27,6 +29,7 @@ export class AddAuthorComponent implements OnInit {
       .addAuthor(this.addAuthorForm.value)
       .subscribe((res) => console.log(res));
   }
+
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];

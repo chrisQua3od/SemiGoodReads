@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { AuthorService } from 'src/app/services/authors.service';
 import { BooksService } from 'src/app/services/books.service';
 import { CategoryService } from 'src/app/services/categories.service';
@@ -17,6 +18,7 @@ export class EditBookComponent implements OnInit, OnChanges {
     private bookService: BooksService,
     private categoryService: CategoryService,
     private authorSerice: AuthorService
+
   ) { }
 
   ngOnInit(): void {
@@ -30,11 +32,15 @@ export class EditBookComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.editBookForm = new FormGroup({
       name: new FormControl(this.updatedBook?.name, [Validators.required]),
-      sumary: new FormControl(this.updatedBook?.sumary, [Validators.required]),
+
       categoryId: new FormControl(this.updatedBook?.categoryId, [
         Validators.required,
       ]),
       author: new FormControl(this.updatedBook?.author, [Validators.required]),
+      photo: new FormControl(this.updatedBook?.cover),
+      sumary:new FormControl(),
+    });
+  }
       cover: new FormControl(this.updatedBook?.cover),
     });
   }

@@ -10,9 +10,7 @@ i {
   margin-right: 30px;
   cursor: pointer;
 }
-i:hover {
-  color: #a52a2a;
-}
+
 td,
 th {
   width: 200px;
@@ -22,6 +20,7 @@ img {
   height: 180px;
 }
 .table {
+
   color: firebrick;
   font-size: larger;
   font-weight: bolder;

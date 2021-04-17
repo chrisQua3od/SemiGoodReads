@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/components/models/category';
@@ -15,6 +16,7 @@ export class AddBookComponent implements OnInit {
   categories!: any;
   authors: any;
   addBookForm = new FormGroup({
+
     name: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]+")]),
     categoryId: new FormControl('', Validators.required),
     author: new FormControl('', Validators.required),
@@ -24,6 +26,7 @@ export class AddBookComponent implements OnInit {
   constructor(
     private bookService: BooksService,
     private categoryService: CategoryService,
+
     private authorSerice: AuthorService,
   ) { }
 
@@ -35,6 +38,7 @@ export class AddBookComponent implements OnInit {
       .getAuthors()
       .subscribe((res) => (this.authors = res.body));
   }
+
   get formControls() {
     return this.addBookForm.controls
   }

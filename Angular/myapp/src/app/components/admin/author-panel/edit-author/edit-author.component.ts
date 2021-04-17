@@ -10,6 +10,7 @@ import { AuthorService } from 'src/app/services/authors.service';
 export class EditAuthorComponent implements OnInit, OnChanges {
   editAuthorForm!: FormGroup;
   @Input() updatedAuthor: any;
+
   constructor(private authorServie: AuthorService) { }
   ngOnInit(): void { }
   ngOnChanges() {
@@ -22,6 +23,7 @@ export class EditAuthorComponent implements OnInit, OnChanges {
       ]),
     });
   }
+
   get formControls() {
     return this.editAuthorForm.controls
   }

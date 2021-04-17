@@ -27,10 +27,11 @@
             }">
 
      <div class="col-md-3">
-       <img class="" src="{{book.bookId?.cover}}" alt="" id="photo">
+       <a [routerLink]="book.bookId._id.toString()"><img class="" src="{{book.bookId?.cover}}" alt="" id="photo"></a>
      </div>
      <div class="col-md-3">
-       <h5>{{book.bookId.name}}</h5>
+       <a [routerLink]="book.bookId._id.toString()"><h5>{{book.bookId.name}}</h5></a>
+
        <p> Average Rating : {{(book.bookId.sumAvg/book.bookId.countAvg) | number:'1.1-1' }} </p>
        <star-rating [value]="book.rating" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="24px"
          (rate)="onRate($event,book)"></star-rating>

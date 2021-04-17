@@ -10,6 +10,7 @@ import { CategoryService } from 'src/app/services/categories.service';
 export class EditItemComponent implements OnInit, OnChanges {
   editForm!: FormGroup;
   @Input() category: any;
+
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void { }
@@ -17,6 +18,7 @@ export class EditItemComponent implements OnInit, OnChanges {
     this.editForm = new FormGroup({
       name: new FormControl(this.category?.name, [
         Validators.required,
+
       ]),
     });
   }
@@ -26,6 +28,7 @@ export class EditItemComponent implements OnInit, OnChanges {
   editCategory() {
     if (this.editForm.value.name) {
       this.categoryService
+
         .editCategory(this.category._id, this.editForm.value)
         .subscribe((data) => console.log(data));
     }

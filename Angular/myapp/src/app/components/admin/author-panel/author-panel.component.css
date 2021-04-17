@@ -2,6 +2,7 @@ i {
   margin-right: 30px;
   cursor: pointer;
 }
+
 i:hover {
   color: #a52a2a;
 }
@@ -22,6 +23,7 @@ img {
 }
 
 .table {
+
   color: firebrick;
   font-size: larger;
   font-weight: bolder;
