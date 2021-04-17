@@ -65,6 +65,15 @@ export class UsersService {
   addReview(userId: string, body: Object) {
     return this.client.post(`${this.baseURL}/${userId}/add-review`, body)
   }
+  editRating(userId: string, rating: Object) {
+    return this.client.patch(`${this.baseURL}/${userId}/edit-rating`, rating)
+  }
+  editStatus(userId: string, status: Object) {
+    return this.client.patch(`${this.baseURL}/${userId}/edit-status`, status)
+  }
+  addBook(userId: string, book: Object) {
+    return this.client.post(`${this.baseURL}/${userId}/add-book`, book)
+  }
 }
 
 

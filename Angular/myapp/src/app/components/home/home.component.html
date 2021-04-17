@@ -1,57 +1,53 @@
  <div class="sidebar">
-        <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-                <a class="nav-link text-white" (click)="ngOnInit()">All</a>
-            </li>
-            <li>
-                <a class="nav-link text-white" (click)="getCurrentBooks()">Currently Reading</a>
-            </li>
-            <li>
-                <a class="nav-link text-white" (click)="getWantToReadBooks()">Want To Read</a>
-            </li>
-            <li>
-                <a class="nav-link text-white" (click)="getReadBooks()">Read</a>
-            </li>
-          
+   <ul class="nav nav-pills flex-column mb-auto">
+     <li class="nav-item">
+       <a class="nav-link text-white" (click)="ngOnInit()">All</a>
+     </li>
+     <li>
+       <a class="nav-link text-white" (click)="getCurrentBooks()">Currently Reading</a>
+     </li>
+     <li>
+       <a class="nav-link text-white" (click)="getWantToReadBooks()">Want To Read</a>
+     </li>
+     <li>
+       <a class="nav-link text-white" (click)="getReadBooks()">Read</a>
+     </li>
 
-        </ul>
-  </div>
 
-<div class="content">
-      <h4 class="text-center shelf">{{currentSection}}</h4>
-      <div class="row bookView" *ngFor="let book of data| paginate:{
+   </ul>
+ </div>
+
+ <div class="content">
+   <h4 class="text-center shelf">{{currentSection}}</h4>
+   <div class="row bookView" *ngFor="let book of data| paginate:{
                 id:'listBooks',
                 itemsPerPage:5,
                 currentPage:page,
                 totalItems:totalRecords
             }">
 
-                <div class="col-md-3">
-                    <img class="" src="{{book.bookId?.cover}}" alt="" id="photo">
-                </div>
-                <div class="col-md-3" >
-                    <h5>{{book.status}}</h5>
-                    <p>{{book.rating}}</p>
-                    <star-rating [value]="book.rating" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray"
-                        size="24px" (rate)="onRate($event)"></star-rating>
-                   
-                    <div class="input-group mb-3"> 
-                        <select class="form-select" id="inputGroupSelect01">
-                            <option selected>{{book.status}}</option>
-                            <option value="1">Currently Reading</option>
-                            <option value="2">Want To Read</option>
-                            <option value="3">Read</option>
-                        </select>
-                    </div>
-                </div>
+     <div class="col-md-3">
+       <img class="" src="{{book.bookId?.cover}}" alt="" id="photo">
+     </div>
+     <div class="col-md-3">
+       <h5>{{book.bookId.name}}</h5>
+       <p> Average Rating : {{(book.bookId.sumAvg/book.bookId.countAvg) | number:'1.1-1' }} </p>
+       <star-rating [value]="book.rating" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="24px"
+         (rate)="onRate($event,book)"></star-rating>
+       <div class="input-group mb-3">
+         <select class="form-select" id="inputGroupSelect01" (change)="changeStatus($event,book)">
+           <option selected>{{book.status}}</option>
+           <option value="Currently Reading">Currently Reading</option>
+           <option value="Want To Read">Want To Read</option>
+           <option value="Read">Read</option>
+         </select>
+       </div>
+     </div>
 
-                <p class="col-md-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates soluta ab
-                    nam laboriosam numquam doloribus fuga porro. Dolorum nemo enim optio iure? Delectus atque numquam
-                    deleniti nemo quod expedita beatae..</p>
-            </div>
-        </div>
-    
-    <div class="pagination justify-content-center">
-      <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>
-    </div>
+     <p class="col-md-6">{{book.bookId.sumary}}</p>
+   </div>
+ </div>
 
+ <div class="pagination justify-content-center">
+   <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>
+ </div>

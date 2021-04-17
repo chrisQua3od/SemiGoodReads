@@ -7,8 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { BooksService } from 'src/app/services/books.service';
+
 import { Book } from '../models/book';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -23,9 +25,11 @@ export class HeaderComponent implements OnInit {
   books:Array<Book> = []
   filteredList :Array <Book> = this.books;
   logoutIcon:boolean = true
-  constructor(private myService:BooksService,private modalService: NgbModal,private router:Router) { }
+  constructor(private myService:BooksService,private modalService: NgbModal,private router:Router,private auth:AuthService) { }
 
   ngOnInit(): void {
+    this.logoutIcon = this.auth.loggedIn()
+
   }
   get search() {
     return this.searchForm.get('searchVal');
@@ -75,7 +79,6 @@ export class HeaderComponent implements OnInit {
     }else{
         //do nothing
     }
-
   }
 
 

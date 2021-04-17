@@ -26,7 +26,7 @@ export class AddBookComponent implements OnInit {
     private bookService: BooksService,
     private categoryService: CategoryService,
     private authorSerice: AuthorService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.categoryService
