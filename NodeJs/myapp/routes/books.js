@@ -39,7 +39,7 @@ bookRouter.post("/", async (req, res) => {
 
         const { id } = req.params
 
-        const book = await bookModel.findById(id).populate("author").exec();
+        const book = await bookModel.findById(id).populate("author").populate({path:"reviews",populate:{path:"user"}}).exec();
         try {
             res.json(book)
         }

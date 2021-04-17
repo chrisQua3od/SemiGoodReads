@@ -23,9 +23,10 @@ loginRoute.post("/", async (req, res) => {
         res.status(404).json({})
       }
       else {
-        const token = await jwt.sign({ user: useree }, config.secret , { expiresIn: '1m' })
+        const token = await jwt.sign({ user: useree }, config.secret , { expiresIn: '1d' })
+        
+        const refreshToken = await jwt.sign({ user: useree }, config.secret , { expiresIn: '365d' })
         console.log("ok");
-        const refreshToken = await jwt.sign({ user: useree }, config.secret , { expiresIn: '1d' })
         res.status(200).send({ auth: true, userId: useree._id, token,refreshToken });
         // res.status(200).send({ auth: true, userId: useree._id, token });
       }

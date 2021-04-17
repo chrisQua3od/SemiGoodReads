@@ -2,10 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { Book } from '../models/book';
+
+
 import { Router } from '@angular/router'
 import { StarRatingComponent } from 'ng-starrating';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from './../models/user';
 
+import { FormBuilder ,Validators } from '@angular/forms';
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.component.html',
@@ -13,20 +17,29 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class BookDetailsComponent implements OnInit, OnDestroy {
   userId: any
-
+  user:User={
+    _id:'',
+    fname:'',
+    lname:'',
+    photo:''
+  }
+  
   bookStatus = {
     bookId: '',
     status: ''
   }
+ 
   constructor(
     private router: Router,
     private myService: UsersService,
     private myActivatedRoute: ActivatedRoute,
     private authService: AuthService,
+    private fb:FormBuilder ,
     private userService: UsersService) { }
   ngOnDestroy(): void {
     this.subscriber.unsubscribe();
   }
+
 
   books: Book = {
     _id: '',
@@ -46,8 +59,15 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
         name: ''
       }], dateOfBirth: "", photo: ''
     },
-    reviews: [{ body: '' }]
+    reviews: [{ body: '', user:{
+      _id:'',
+      fname:'',
+      lname:'',
+      photo:''
+
+    }}]
   }
+
   subscriber: any
 
   ngOnInit(): void {
@@ -66,10 +86,19 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     starRating: StarRatingComponent;
   }) {
   }
-  addReview(review: string) {
-    console.log(review)
-    console.log(this.books._id)
-    this.myService.addReview(this.userId, { bookId: this.books._id, review }).subscribe(
+  ReviewForm=this.fb.group({
+  review:['',[Validators.required]]
+})
+onSubmit() {
+  // this.ReviewForm.review = this.review?.value
+console.log(this.ReviewForm.get("review")?.valid )
+}
+
+  
+  addReview(review: string ) {
+    
+    
+    this.myService.addReview(this.userId, { bookId: this.books._id, review }  ).subscribe(
       res => console.log(res),
     );
   }
@@ -77,6 +106,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     console.log(e.target.value, this.books._id);
     this.bookStatus.bookId = this.books._id
     this.bookStatus.status = e.target.value
+   
     this.userService.addBook(this.userId, this.bookStatus).subscribe(res => console.log(res));
   }
 }

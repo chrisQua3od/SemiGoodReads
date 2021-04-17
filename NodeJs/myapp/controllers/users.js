@@ -105,7 +105,8 @@ async function addBookReview(req, res) {
                 new: true
             })
         console.log(req.body.review);
-        await BookModel.findByIdAndUpdate(req.body.bookId, { $push: { reviews: { body: req.body.review } } });
+        await BookModel.findByIdAndUpdate(req.body.bookId, { $push: { reviews: { body: req.body.review, user :req.params.id } } });
+   
         res.json({ status: 200, message: "success" });
     } catch (error) {
         console.log(error.message)
@@ -191,6 +192,14 @@ async function updateUser(req, res) {
         return console.log(error);
     }
 }
+
+
+
+
+
+
+
+
 module.exports = {
     getBooks,
     getReadBooks,

@@ -1,10 +1,7 @@
 .cover {
   height: 20rem;
 }
-.list-group-item{
-border-width: 2px;
-border-style: solid;
-margin-top: 5px;
-padding-top: 2px;
+.par{
+font-weight: bolder;
 
 }

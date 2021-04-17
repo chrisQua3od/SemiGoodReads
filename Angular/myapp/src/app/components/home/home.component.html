@@ -1,4 +1,5 @@
- <div class="sidebar">
+<!-- <div> -->
+<div class="sidebar">
    <ul class="nav nav-pills flex-column mb-auto">
      <li class="nav-item">
        <a class="nav-link text-white" (click)="ngOnInit()">All</a>
@@ -47,6 +48,7 @@
      <p class="col-md-6">{{book.bookId.sumary}}</p>
    </div>
  </div>
+<!-- </div> -->
 
  <div class="pagination justify-content-center">
    <pagination-controls id="listBooks" (pageChange)="page=$event"></pagination-controls>

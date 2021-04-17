@@ -11,7 +11,7 @@ const booksSchema = new mongoose.Schema({
   categoryId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "categories" },
   sumAvg: { type: Number },
   countAvg: { type: Number },
-  reviews: [{ body: String }],
+  reviews: [{ body: String  ,user :{ type: mongoose.Schema.Types.ObjectId, required: true, ref: "users"}}],
   sumary: { type: String, required: true },
   //summary double mm
 })
