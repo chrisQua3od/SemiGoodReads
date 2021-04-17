@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginUserData = { email: '', password: '' }
   userId: any = ''
-
+  forbidden: boolean = false
   constructor(private auth: AuthService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -48,7 +48,11 @@ export class LoginComponent implements OnInit {
           console.log(res);
 
         },
-        err => console.log(err)
+        err => {
+          this.forbidden = err.status === 403 ? true : false
+        }
+
+
       )
   }
 

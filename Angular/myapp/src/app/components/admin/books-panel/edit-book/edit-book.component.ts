@@ -38,12 +38,11 @@ export class EditBookComponent implements OnInit, OnChanges {
       ]),
       author: new FormControl(this.updatedBook?.author, [Validators.required]),
       photo: new FormControl(this.updatedBook?.cover),
-      sumary:new FormControl(),
-    });
-  }
+      sumary: new FormControl(),
       cover: new FormControl(this.updatedBook?.cover),
     });
   }
+
   get formControls() {
     return this.editBookForm.controls
   }
