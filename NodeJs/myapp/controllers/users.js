@@ -36,7 +36,7 @@ async function getBooks(req, res) {
 // list books with read status
 async function getReadBooks(req, res) {
     try {
-        const readBooks = await getBooksByStatus(req.params.id, "read")
+        const readBooks = await getBooksByStatus(req.params.id, "Read")
         res.status(200).send(readBooks)
     } catch (error) {
         res.status(400).send(error.message)
@@ -45,7 +45,7 @@ async function getReadBooks(req, res) {
 
 async function getCurrentlyReadingBooks(req, res) {
     try {
-        const readBooks = await getBooksByStatus(req.params.id, "current reading")
+        const readBooks = await getBooksByStatus(req.params.id, "Currently Reading")
         res.status(200).send(readBooks)
     } catch (error) {
         res.status(400).send(error.message)
@@ -54,7 +54,8 @@ async function getCurrentlyReadingBooks(req, res) {
 
 async function getWantToReadBooks(req, res) {
     try {
-        const readBooks = await getBooksByStatus(req.params.id, "want to read")
+        const readBooks = await getBooksByStatus(req.params.id, "Want To Read")
+        console.log(readBooks);
         res.status(200).send(readBooks)
     } catch (error) {
         res.status(400).send(error.message)
@@ -64,6 +65,7 @@ async function getWantToReadBooks(req, res) {
 async function getBooksByStatus(userId, status) {
     const allBooks = await UserModel.findOne({ _id: userId }).select({ library: 1, _id: 0 }).populate({ path: 'library', populate: { path: 'bookId' } }).exec()
     const readBooks = allBooks.library.filter((book) => book.status === status)
+    // con
     return readBooks
 }
 async function addBookForUser(req, res) {
