@@ -9,6 +9,7 @@ bookRouter.post("/", async (req, res) => {
         author: req.body.author,
         cover: req.body.cover,
         name: req.body.name,
+        sumary:req.body.sumary,
         categoryId: req.body.categoryId,
         sumary: req.body.sumary,
     })
@@ -38,7 +39,7 @@ bookRouter.post("/", async (req, res) => {
 
         const { id } = req.params
 
-        const book = await bookModel.findById(id).populate("author").exec();
+        const book = await bookModel.findById(id).populate("author").populate({path:"reviews",populate:{path:"user"}}).exec();
         try {
             res.json(book)
         }
@@ -65,6 +66,7 @@ bookRouter.post("/", async (req, res) => {
             ...(book.author ? { author: book.author } : {}),
             ...(book.cover ? { cover: book.cover } : {}),
             ...(book.name ? { name: book.name } : {}),
+            ...(book.sumary ? { sumary: book.sumary } : {}),
             ...(book.categoryId ? { categoryId: book.categoryId } : {}),
             ...(book.sumary ? { sumary: book.sumary } : {}),
         }

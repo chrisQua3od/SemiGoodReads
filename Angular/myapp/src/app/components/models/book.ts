@@ -1,4 +1,4 @@
-import { Author } from "./user";
+import { Author , User } from "./user";
 
 export interface Book {
     _id: string
@@ -10,5 +10,5 @@ export interface Book {
     countAvg: number
     author: Author
     sumAvg: number
-    reviews: [{ body: '' }]
+    reviews: [{ body: ''  , user: User}]
 }

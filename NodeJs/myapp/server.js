@@ -24,9 +24,9 @@ app.use((req, res, next) => {
 
 const authent = ((req, res, next) => {
   const bearerHeader = req.headers['authorization'];
-  console.log("hello")
+ 
   if (typeof bearerHeader !== 'undefined') {
-    console.log("hhhhhhh")
+   
     const bearer = bearerHeader.split(' ');
     const bearerToken = bearer[1];
 
@@ -35,13 +35,13 @@ const authent = ((req, res, next) => {
         res.sendStatus(403);
       }
       else {
-        console.log("aya")
+       
         next();
       }
     })
   }
   else {
-    console.log("jjjjjjjjjjjj")
+    console.log("err")
   }
 });
 
@@ -49,12 +49,12 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/login", loginRouter)
-app.use("/categories", authent, categories);
-app.use("/authors", authent, author);
-app.use("/books", authent, books);
-app.use("/users", authent, users);
+app.use("/categories", categories);
+app.use("/authors", author);
+app.use("/books", books);
+app.use("/users", users);
 app.use("/register", register);
-app.use("/admin", admin)
+app.use("/admin",admin)
 
 app.use((req, res) => {
   res.status(404).send("Sorry can't find that!");
@@ -68,7 +68,7 @@ app.use((req, res, next) => {
 });
 
 app.listen(PORT, (err) => {
-  if (err) console.error("hhhhhhhhhhhhhhhh", err);
+  if (err) console.error( err);
   console.log(`App server is running and listening on port ${PORT}`);
 
 });

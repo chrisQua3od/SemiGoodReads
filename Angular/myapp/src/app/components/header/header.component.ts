@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
   subscriber:any
 
   onSubmit() {
-    console.log("boooooooook")
+  
 
     this.subscriber = this.myService.getBooks()
     .subscribe((book:any)=>{
