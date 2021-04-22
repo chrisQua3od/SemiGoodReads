@@ -1,17 +1,17 @@
-<div class="sticky-top">
+<!-- <div class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand"  data-abc="true">GoodReads</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span> 
-  </button>
+  </button>gg
         <div class="collapse navbar-collapse d-flex" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"> <a [routerLinkActiveOptions]='{exact:true}' routerLinkActive="active" routerLink="home" class="nav-link" data-abc="true">Home</a> </li>
                 <li class="nav-item"> <a routerLinkActive="active" routerLink="books" class="nav-link"  data-abc="true">Books</a> </li>
                 <li class="nav-item"> <a routerLinkActive="active" routerLink="authors" class="nav-link"  data-abc="true">Authors</a> </li>
-                <li class="nav-item"> <a routerLinkActive="active" routerLink="categories" class="nav-link"  data-abc="true">Categories</a> </li>
+                <li class="nav-item"> <a routerLinkActive="active" routerLink="categories" class="nav-link"  data-abc="true">Categories</a> </li> -->
                 <!-- <li class="nav-item"> <a routerLinkActive="text-danger" routerLink="login" class="nav-link" href="#" data-abc="true">login</a> </li> -->
-            </ul>
+            <!-- </ul>
             <form *ngIf="logoutIcon" class="d-flex form-inline my-2 my-lg-0 searchbox" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
                 <input formControlName='searchVal' class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="open(mymodal)">Search</button>
@@ -20,9 +20,9 @@
             <button class="logout" (click)="logOut()" *ngIf="logoutIcon"><i class="fas fa-sign-out-alt"></i></button>
         </div>
     </nav>
-</div>
+</div> -->
 
-<ng-template #mymodal let-modal>
+<!-- <ng-template #mymodal let-modal>
     <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Search Results</h4>
@@ -44,4 +44,42 @@
     li>a.active {
         color: #F97924
     }
-</style>
+</style> -->
+
+
+
+<nav class="navbar navbar-expand-lg fixed-top" (scroll)="onWindowScroll($event);">
+    <h1>GoodReads</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+     <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a [routerLinkActiveOptions]='{exact:true}' routerLinkActive="active" routerLink="home" class="nav-link" data-abc="true">Home</a>
+        </li>
+        <li class="nav-item">
+            <a routerLinkActive="active" routerLink="books" class="nav-link"  data-abc="true">Books</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" routerLink="categories" class="nav-link"  data-abc="true">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a routerLinkActive="active" routerLink="authors" class="nav-link"  data-abc="true">Authors</a>
+        </li>
+        <div class="input-group input-group-sm mb-3 d-flex">
+          <input type="text" class="form-control search" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="login d-flex mr-auto justify-content-around">
+          <li class="nav-item ">
+            <button type="button" class="btn btn-primary ">Login</button>
+          </li>
+          <li class="nav-item mr-auto">
+            <button type="button" class="btn btn-primary">Register</button>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </nav>

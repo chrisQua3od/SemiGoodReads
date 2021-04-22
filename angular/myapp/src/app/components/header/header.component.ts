@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit,OnDestroy,HostListener } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -86,6 +86,16 @@ export class HeaderComponent implements OnInit,OnDestroy {
       this.router.navigateByUrl('/login')
     }else{
         //do nothing
+    }
+  }
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(e:any) {
+    let element = document.querySelector('.navbar');
+    if (window.pageYOffset > element?.clientHeight) {
+        element?.classList.add('navbar-inverse');
+        console.log('nac changed')
+    } else {
+      element?.classList.remove('navbar-inverse');
     }
   }
 

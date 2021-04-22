@@ -1,4 +1,4 @@
-.navbar-brand {
+/* .navbar-brand {
     margin-left: 155px;
     padding-top: 0.3125rem;
     padding-bottom: 0.3125rem;
@@ -14,14 +14,14 @@
     color: rgb(165, 19, 19);
     font-size: large;
     font-weight: bolder;
-}
+} */
 
 
 /* .header{
     position: fixed;
 } */
 
-.navbar-nav li {
+/* .navbar-nav li {
     margin-left: 30px;
     font-size: large;
     font-weight: bold;
@@ -29,9 +29,9 @@
 
 .searchbox {
     margin-left: 120px;
-}
+} */
 
-.modal-content {
+/* .modal-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -43,11 +43,90 @@
     border-radius: 0.3rem;
     outline: 0;
     width: 1000px !important;
-    /* margin-left: 30px; */
+                                    margin-left: 30px;
     text-align: center;
-}
+} */
 
-.logout {
+/* .logout {
     float: right;
     margin-left: 10%;
-}
+} */
+
+
+
+.navbar{
+    overflow:hidden;
+  }
+
+  .navbar-nav a{
+    color:white;
+    margin:0 20px;
+    margin-top:30px;
+    font-weight:bold;
+    font-family: sans-serif;
+  }
+
+  .navbar-toggler{
+    color: white !important;;
+    border: none, im !important;;
+    outline: none !important;
+  }
+
+  .navbar-toggler .fas{
+    color:white;
+    font-size:26px;
+    
+  }
+
+  .nav-link:hover{
+    font-weight: 600;
+    border-bottom: 1px solid white;
+    margin-bottom: -1px;
+  }
+
+  .login button{
+    background: none;
+    outline: none;
+    border: none;
+    font-size:large;
+  }
+
+  .login button:hover{
+    background-color: rgb(14, 12, 12);
+    border: none;
+  }
+
+  .navbar h1{
+    color: #cac3c3;
+    font-weight: bolder;
+    font-family: cursive;
+  }
+
+  /* .navbar-inverse{
+    background-color:black
+  } */
+
+  .login{
+    margin-left: 20%;
+    margin-top: 4%
+  }
+
+  .navbar-inverse{
+      background-color:rgba(128, 0, 0, 0.795);
+  }
+
+  .search{
+    margin-top: 18%;
+    width: -moz-fit-content;
+    border-radius: 10px!important;
+    outline: none;
+    border: none;
+    padding-left: 30px;
+  }
+
+  .input-group .fas{
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    z-index: 5;
+  }

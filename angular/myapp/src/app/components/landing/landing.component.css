@@ -1,0 +1,115 @@
+.jumbotron{
+    background-image:url('https://lifeatrestoration.com/wp-content/uploads/2016/09/group-of-people-reading-the-bible-holding-hands.jpg') ;
+    padding: 0;
+    height: 60vh;
+    background-size: cover;
+    background-position:center;
+    border-radius: 0; 
+  }
+
+  .jumbotron::before{
+    background:#151414;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.5;
+    height: inherit;
+  }
+
+  .jumbotron h1{
+    margin: 10% 0;
+    font-size: 30px;
+    line-height:1.5;
+    z-index: 5;
+  }
+
+  .intro{
+    padding-top: 5%;
+  }
+
+  .intro h1{
+    color: white;
+    font-size:xx-large;
+    font-family: initial;
+  }
+
+ 
+
+  .spaces h1{
+    font-size:larger;
+    font-weight: 4000;
+    margin-bottom: 3%;
+  }
+
+  .carousel-container{
+    width: 90%;
+    height: auto;
+    background-color: black;
+    padding: 1%;
+    padding-top: 4%;
+    align-items: center;
+    box-sizing: border-box;
+    margin-left: 5%;
+    border-radius: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+
+
+.section-title{
+  color: #6c0808;
+  font-family: cursive;
+  padding-left: 4%;
+}
+
+.carousel-container-books{
+  width: 90%;
+  height: auto;
+  background-color: #11182db5;
+  padding: 1%;
+  padding-top: 4%;
+  align-items: center;
+  box-sizing: border-box;
+  margin-left: 5%;
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.words{
+  padding:2%
+}
+
+.spaces-b-curosel{
+  font-size:larger;
+    font-weight: 4000;
+    margin-bottom: 3%;
+}
+
+.rounded-circle{
+  border-radius: 50% !important;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.img-fluid{
+  height: 120px;
+  width: 128px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.team-player h4,h1{
+  color:maroon;
+  font-family: cursive;
+  font-weight:bolder
+}
+
+.section-team{
+  margin-bottom: 3%;
+}

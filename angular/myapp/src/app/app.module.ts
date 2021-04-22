@@ -31,7 +31,8 @@ import { AdminLoginComponent } from './components/admin/admin-login/admin-login.
 import { CommonModule } from '@angular/common';  
 import { CategoryDetailsComponent } from './components/category-details/category-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
 import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -44,6 +45,7 @@ import { EditBookComponent } from './components/admin/books-panel/edit-book/edit
 import { AuthorPanelComponent } from './components/admin/author-panel/author-panel.component';
 import { AddAuthorComponent } from './components/admin/author-panel/add-author/add-author.component';
 import { EditAuthorComponent } from './components/admin/author-panel/edit-author/edit-author.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,8 @@ import { EditAuthorComponent } from './components/admin/author-panel/edit-author
     AuthorPanelComponent,
     AddAuthorComponent,
     EditAuthorComponent,
-    AuthorDetailsComponent
+    AuthorDetailsComponent,
+    LandingComponent
   ],
   imports: [
     CommonModule,
@@ -87,6 +90,8 @@ import { EditAuthorComponent } from './components/admin/author-panel/edit-author
     ReactiveFormsModule,
     NgbModule,
     RatingModule,
+    CarouselModule,
+    NoopAnimationsModule
 
     // RouterModule.forRoot(routes)
   ],
@@ -95,6 +100,7 @@ import { EditAuthorComponent } from './components/admin/author-panel/edit-author
     AuthorService,
     UsersService,
     HomeService,
+    NoopAnimationsModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
